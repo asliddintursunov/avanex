@@ -28,6 +28,7 @@ import {
 import { BiDollar, BiMoney, BiPurchaseTag } from "react-icons/bi";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { getCookie } from "../../lib/actions";
 
 interface SidebarType {
   value: string;
@@ -38,6 +39,7 @@ interface SidebarType {
 
 export default function Sidebar() {
   const { t } = useTranslation();
+  const job_title = (getCookie("job_title") as "Bugalter" | "Manager") || "";
 
   const Main: SidebarType[] = [
     {
@@ -60,21 +62,25 @@ export default function Sidebar() {
           icon: FaSalesforce,
           children: [],
         },
+        ...(job_title === "Manager"
+          ? [
+              {
+                path: "/loaded-items",
+                value: t("menus.loaded_items"),
+                icon: FaTruckLoading,
+                children: [],
+              },
+            ]
+          : []),
         {
-          path: "/loaded-items",
-          value: t("menus.loaded_items"),
-          icon: FaTruckLoading,
-          children: [],
-        },
-        {
-          path: "/sales",
+          path: "/sale",
           value: t("menus.sales"),
           icon: MdSell,
           children: [],
         },
         {
-          path: "/canceled-sales",
-          value: t("menus.canceled_sales"),
+          path: "/returned-sales",
+          value: t("menus.returned_sales"),
           icon: MdCancel,
           children: [],
         },
@@ -111,43 +117,51 @@ export default function Sidebar() {
   ];
 
   const DollarRate: SidebarType[] = [
-    {
-      path: "/dollar-rate",
-      value: t("menus.dollar_rate"),
-      icon: BiDollar,
-      children: [],
-    },
+    ...(job_title === "Manager"
+      ? [
+          {
+            path: "/dollar-rate",
+            value: t("menus.dollar_rate"),
+            icon: BiDollar,
+            children: [],
+          },
+        ]
+      : []),
   ];
 
   const Clients: SidebarType[] = [
     {
-      path: "/clients",
-      value: t("menus.clients"),
+      path: "/clients-list",
+      value: t("menus.clients_list"),
       icon: MdPerson,
       children: [],
     },
   ];
 
   const Purchases: SidebarType[] = [
-    {
-      path: "#",
-      value: t("menus.purchases"),
-      icon: BiPurchaseTag,
-      children: [
-        {
-          path: "/purchase-order",
-          value: t("menus.purchase_order"),
-          icon: BiPurchaseTag,
-          children: [],
-        },
-        {
-          path: "/items-on-way",
-          value: t("menus.items_on_way"),
-          icon: FaProductHunt,
-          children: [],
-        },
-      ],
-    },
+    ...(job_title === "Manager"
+      ? [
+          {
+            path: "#",
+            value: t("menus.purchases"),
+            icon: BiPurchaseTag,
+            children: [
+              {
+                path: "/purchase-order",
+                value: t("menus.purchase_order"),
+                icon: BiPurchaseTag,
+                children: [],
+              },
+              {
+                path: "/items-on-way",
+                value: t("menus.items_on_way"),
+                icon: FaProductHunt,
+                children: [],
+              },
+            ],
+          },
+        ]
+      : []),
   ];
 
   const Menus: SidebarType[][] = [
@@ -180,18 +194,16 @@ export default function Sidebar() {
             onClick={handleClick}
             display="flex"
             alignItems="center"
-            gap="3"
+            // gap="3"
             p="3"
-            mx="2"
-            mb="1"
+            mx="1"
             borderRadius="lg"
             cursor="pointer"
             position="relative"
             role="group"
             transition="all 0.2s ease-in-out"
             bgColor={
-              location.pathname === item.path ||
-              location.pathname.includes(item.path)
+              location.pathname === item.path
                 ? colorMode === "light"
                   ? "gray.200"
                   : "gray.600"

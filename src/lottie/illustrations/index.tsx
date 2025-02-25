@@ -7,7 +7,7 @@ export const PageNotFound = () => {
     <Lottie
       loop
       autoPlay
-      style={{ height: 400 }}
+      style={{ height: 600 }}
       animationData={PageNotFoundData}
     />
   );

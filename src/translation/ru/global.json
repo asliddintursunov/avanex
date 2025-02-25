@@ -1,6 +1,16 @@
 {
   "roles": {},
-  "menus": {},
+  "menus": {
+    "dashboard": "Основной",
+    "sales": "Продажа",
+    "sales_order": "Заказ на продажу",
+    "returned_sales": "Возврат продажи",
+    "sales_report": "Отчеты по продажи",
+    "debtors": "Должники",
+    "total_sales": "Общие продажи",
+    "warehouse": "Склад",
+    "clients_list": "Список клиентов"
+  },
   "tabs": {},
   "labels": {},
   "buttons": {},

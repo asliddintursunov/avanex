@@ -8,66 +8,45 @@ import {
   ViewOffIcon,
   Button,
 } from "@chakra-ui/icons";
-import { Image, useColorMode } from "@chakra-ui/react";
+import { useColorMode } from "@chakra-ui/react";
 import clsx from "clsx";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useToast } from "../../hooks/useToast";
-import ventum_logo from "../../../assets/ventum_logo.png";
+import { useFetch } from "../../hooks/useFetch";
+import { setCookie } from "../../lib/actions";
+import { LoginSuccessType, LoginRequestType } from "../../types/accounts";
 
 const Login = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
-  console.log("baseUrl", baseUrl);
 
   const { colorMode } = useColorMode();
   const navigate = useNavigate();
-  const showToast = useToast();
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [isPending, setIsPending] = useState<boolean>(false);
-  const [loginValue, setLoginValue] = useState<string>("");
-  const [passwordValue, setPasswordValue] = useState<string>("");
+  const { sendData } = useFetch();
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const [showPassword, setShowPassword] = useState<boolean>(!false);
+  const [isPending, setIsPending] = useState<boolean>(false);
+  const [loginValue, setLoginValue] = useState<string>("Bugalter");
+  const [passwordValue, setPasswordValue] = useState<string>("123");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsPending(true);
 
     try {
-      const request = await fetch(`${baseUrl}/accounts/log-in`, {
+      const response = await sendData<LoginSuccessType, LoginRequestType>({
+        url: `${baseUrl}/accounts/login`,
+        data: { login: loginValue, password: passwordValue },
         method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          login: loginValue,
-          password: passwordValue,
-          deviceId: "string11",
-          token: "string",
-          language: "uz",
-        }),
+        success_message: undefined,
+        error_message: undefined,
       });
 
-      if (!request.ok) {
-        showToast({
-          title: "Xatolik",
-          description: "Login yokida Parol xato",
-          status: "error",
-          position: "top",
-        });
-        return;
-      }
-      const response = await request.json();
-      console.log("response::::", response);
-
+      setCookie("access_token", response.data.token);
+      setCookie("get_me", JSON.stringify(response.data.employee));
+      setCookie("job_title", response.data.employee.jobTitle);
       navigate("/dashboard");
-    } catch (error: unknown) {
-      showToast({
-        title: "Xatolik",
-        description: "Login yokida Parol xato",
-        status: "error",
-        position: "top",
-      });
-      console.log(error);
+    } catch (error) {
+      console.error("Login Error:", error);
     } finally {
       setIsPending(false);
     }
@@ -88,6 +67,7 @@ const Login = () => {
           <FormControl isRequired>
             <FormLabel>Login</FormLabel>
             <Input
+              value={loginValue}
               onChange={(e) => setLoginValue(e.currentTarget.value)}
               borderRadius={"xl"}
               type="text"
@@ -102,6 +82,7 @@ const Login = () => {
           <FormControl isRequired position="relative">
             <FormLabel>Parol</FormLabel>
             <Input
+              value={passwordValue}
               onChange={(e) => setPasswordValue(e.currentTarget.value)}
               type={showPassword ? "text" : "password"}
               placeholder="Parol"
@@ -156,9 +137,7 @@ const Login = () => {
       <Box
         as="div"
         className="flex-1 hidden lg:grid place-content-center bg-white h-screen rounded-bl-[25%]"
-      >
-        <Image src={ventum_logo} w="full" h="full" border="none" />
-      </Box>
+      ></Box>
     </Box>
   );
 };

@@ -8,6 +8,8 @@ interface ApiRequestProps<T> {
   url: string;
   data: T;
   method: "POST" | "PATCH";
+  success_message?: string;
+  error_message?: string;
 }
 
 export function useFetch() {
@@ -29,7 +31,13 @@ export function useFetch() {
   }, []);
 
   const sendData = useCallback(
-    async <T,>({ url, data, method }: ApiRequestProps<T>): Promise<T> => {
+    async <TResponse, TRequest>({
+      url,
+      data,
+      method,
+      success_message,
+      error_message,
+    }: ApiRequestProps<TRequest>): Promise<TResponse> => {
       try {
         const response = await api({
           method,
@@ -37,19 +45,22 @@ export function useFetch() {
           data,
         });
 
-        // showDialog(
-        //   t("toast_messages.success"),
-        //   t("toast_messages.success_sending_request"),
-        //   "success"
-        // );
+        if (success_message) {
+          showDialog(t("toast_messages.success"), success_message, "success");
+        }
+
         return response.data;
-      } catch (error) {
+      } catch (error: any) {
         console.error(`Error in ${method} request to ${url}:`, error);
+
         showDialog(
           t("toast_messages.error"),
-          t("toast_messages.error_sending_request"), // error.data.message
+          !error_message
+            ? error.message
+            : t("toast_messages.error_sending_request"),
           "error"
         );
+
         throw error;
       }
     },

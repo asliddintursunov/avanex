@@ -1,7 +1,8 @@
+import { PageNotFound } from "../../lottie/illustrations";
 function NotFound() {
   return (
-    <div className="text-center text-4xl mt-20">
-      <h1>Not Found</h1>
+    <div className="h-screen w-screen grid place-items-center">
+      <PageNotFound />
     </div>
   );
 }

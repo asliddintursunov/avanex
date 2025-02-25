@@ -1,6 +1,16 @@
 {
   "roles": {},
-  "menus": {},
+  "menus": {
+    "dashboard": "Asosiy",
+    "sales": "Sotuvlar",
+    "sales_order": "Sotuv buyurtmasi",
+    "returned_sales": "Bekor qilingan sotuvlar",
+    "sales_report": "Sotuv hisobotlari",
+    "debtors": "Qarzdorlar",
+    "total_sales": "Umumiy sotuvlar",
+    "warehouse": "Ombor",
+    "clients_list": "Mijozlar ro'yxati"
+  },
   "tabs": {},
   "labels": {},
   "buttons": {},
