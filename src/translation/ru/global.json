@@ -11,8 +11,9 @@
     "warehouse": "Склад",
     "clients_list": "Список клиентов"
   },
-  "tabs": {},
-  "labels": {},
+  "labels": {
+    "business_partners_group": "Группа деловых партнеров"
+  },
   "buttons": {},
   "toast_messages": {}
 }

@@ -11,8 +11,9 @@
     "warehouse": "Ombor",
     "clients_list": "Mijozlar ro'yxati"
   },
-  "tabs": {},
-  "labels": {},
+  "labels": {
+    "business_partners_group": "Biznes hamkorlar guruhi"
+  },
   "buttons": {},
   "toast_messages": {}
 }

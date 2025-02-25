@@ -7,13 +7,13 @@ import {
   Skeleton,
 } from "@chakra-ui/react";
 
-const TableSkeleton = () => {
+const TableSkeleton = ({ rowSize = 15 }: { rowSize?: number }) => {
   return (
     <TableContainer>
       <Table variant="striped" colorScheme="gray">
         <Tbody>
           {/* Skeleton Rows */}
-          {[...Array(15)].map((_, index) => (
+          {[...Array(rowSize)].map((_, index) => (
             <Tr key={index}>
               <Td>
                 <Skeleton height="10px" />

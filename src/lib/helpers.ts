@@ -1,7 +1,9 @@
 export const generateUrlWithParams = (
-  baseUrl: string,
+  endpoint: string,
   params: Record<string, string | number | null | undefined>
 ): string => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
   const urlParams = new URLSearchParams();
 
   Object.entries(params).forEach(([key, value]) => {
@@ -10,5 +12,5 @@ export const generateUrlWithParams = (
     }
   });
 
-  return `${baseUrl}?${urlParams.toString()}`;
+  return `${baseUrl + endpoint}?${urlParams.toString()}`;
 };
