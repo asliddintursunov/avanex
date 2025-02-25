@@ -24,3 +24,16 @@ export type BusinessPartnersType = {
     defaultCurrency: string;
   }[];
 };
+
+export type BusinessPartnerByCardNameType = {
+  cardCode: string;
+  cardName: string;
+  cardType: string;
+  groupCode: number;
+  groupName: string;
+  phone1: null | string | number;
+  valid: string;
+  currentAccountBalance: number;
+  currency: string;
+  defaultCurrency: string;
+};

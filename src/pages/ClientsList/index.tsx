@@ -17,7 +17,10 @@ import {
 import TableSkeleton from "../../components/Skeleton/TableSkeleton";
 import { useRQFetchData } from "../../hooks/useRQfetch";
 import { generateUrlWithParams } from "../../lib/helpers";
-import { BusinessPartnersType } from "../../types/business-partners";
+import {
+  BusinessPartnerByCardNameType,
+  BusinessPartnersType,
+} from "../../types/business-partners";
 import { useTranslation } from "react-i18next";
 import TableNoData from "../../components/Table/TableNoData";
 import BusinessPartnersModal from "../../components/Modals/BusinessPartners/BusinessPartnersModal";
@@ -34,6 +37,8 @@ function ClientsList() {
 
   const [debouncedCardName] = useDebounce(cardName, 500);
   const [debouncedPhone] = useDebounce(phone, 500);
+
+  const [partner, setPartner] = useState<BusinessPartnerByCardNameType>();
 
   const { data: ClientsList, isLoading } = useRQFetchData<BusinessPartnersType>(
     [
@@ -108,7 +113,10 @@ function ClientsList() {
                       _hover={{
                         bg: colorMode === "light" ? "gray.300" : "gray.500",
                       }}
-                      onClick={onOpen}
+                      onClick={() => {
+                        setPartner(el);
+                        onOpen();
+                      }}
                     >
                       <Td>{el.cardCode}</Td>
                       <Td>{el.cardName}</Td>
@@ -127,7 +135,7 @@ function ClientsList() {
         {!ClientsList?.data.length && !isLoading && <TableNoData />}
         {isLoading && <TableSkeleton />}
       </Box>
-      <BusinessPartnersModal isOpen={isOpen} onClose={onClose} />
+      <BusinessPartnersModal isOpen={isOpen} onClose={onClose} partner={partner} />
     </Box>
   );
 }

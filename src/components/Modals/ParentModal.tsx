@@ -68,10 +68,7 @@ function ParentModal({
       motionPreset="slideInBottom"
     >
       <ModalOverlay />
-      <ModalContent
-        // bg={colorMode === "light" ? "var(--white)" : "var(--black)"}
-        bg={colorMode === "light" ? "gray.50" : "gray.800"}
-      >
+      <ModalContent bg={colorMode === "light" ? "gray.50" : "gray.700"}>
         <ModalHeader>{headerContent}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>{body}</ModalBody>
