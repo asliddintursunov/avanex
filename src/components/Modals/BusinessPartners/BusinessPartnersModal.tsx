@@ -25,7 +25,7 @@ function BusinessPartnersModal({ isOpen, onClose, partner }: Props) {
     value: string | number | undefined | null;
   }[][] = [
     [
-      { label: t("labels.card_code"), value: partner?.cardCode },
+      { label: t("labels.partner_code"), value: partner?.cardCode },
       { label: t("labels.card_name"), value: partner?.cardName },
       { label: t("labels.group_code"), value: partner?.groupCode },
       { label: t("labels.group_name"), value: partner?.groupName },
@@ -33,11 +33,19 @@ function BusinessPartnersModal({ isOpen, onClose, partner }: Props) {
     [
       { label: t("labels.phone"), value: partner?.phone1 },
       {
-        label: t("labels.current_account_balanc"),
+        label: t("labels.current_account_balance"),
         value: partner?.currentAccountBalance,
       },
-      { label: t("labels.currency"), value: partner?.currency },
-      { label: t("labels.card_type"), value: partner?.cardType },
+      { label: t("labels.currency"), value: partner?.defaultCurrency },
+      {
+        label: t("labels.card_type"),
+        value:
+          partner?.cardType === "C"
+            ? t("labels.customer")
+            : partner?.cardType === "S"
+            ? t("labels.supplier")
+            : "null",
+      },
     ],
   ];
 

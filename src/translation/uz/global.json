@@ -12,7 +12,37 @@
     "clients_list": "Mijozlar ro'yxati"
   },
   "labels": {
-    "business_partners_group": "Biznes hamkorlar guruhi"
+    "business_partners_group": "Biznes hamkorlar guruhi",
+    "partner_code": "Hamkor kodi",
+    "card_name": "Hamkor nomi",
+    "group_code": "Guruh kodi",
+    "group_name": "Guruh nomi",
+    "phone": "Telefon raqam",
+    "current_account_balance": "Joriy hisob balansi",
+    "card_type": "Hamkor turi",
+    "supplier": "Yetkazib beruvchi",
+    "customer": "Xaridor",
+    "currency": "Valyuta",
+    "start_date": "Boshlanish kuni",
+    "end_date": "Yakunlanish kuni",
+    "doc_num": "Dokument raqami",
+    "doc_date": "Dokument sanasi",
+    "doc_total": "Umumiy summa",
+    "u_type_order": "Buyurtma turi",
+    "u_firma": "Firma",
+    "u_jonatildi": "Jo'natildi",
+    "u_yopildi": "Yopildi",
+    "u_ruxsat": "Ruxsat",
+    "sales_person": "Sotuvchi",
+    "sales_person_name": "Sotuvchi ismi",
+    "price": "Narxi",
+    "u_tip_dostavka": "Yetkazib beish turi",
+    "item_name": "Mahsulot",
+    "weight": "Og'irligi",
+    "warehouse_code": "Ombor kodi",
+    "warehouse_name": "Ombor nomi",
+    "paid_to_date": "To'langan summa",
+    "paid_sum": "To'langan summa"
   },
   "buttons": {
     "go_back": "Ortga qaytish"

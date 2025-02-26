@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BusinessPartnersGroup from "./components/BusinessPartnersGroup";
+import BusinessPartnersGroup from "../../components/Select/BusinessPartnersGroupSelect";
 import TextInput from "../../components/Input/TextInput";
 import { useDebounce } from "use-debounce";
 import Pagination from "../../components/Pagination/Pagination";
@@ -33,7 +33,7 @@ function ClientsList() {
   const [cardName, setCardName] = useState<string>("");
   const [groupName, setGroupName] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
-  const [pagination, setPagination] = useState<number>(0);
+  const [skip, setSkip] = useState<number>(0);
 
   const [debouncedCardName] = useDebounce(cardName, 500);
   const [debouncedPhone] = useDebounce(phone, 500);
@@ -42,13 +42,13 @@ function ClientsList() {
 
   const { data: ClientsList, isLoading } = useRQFetchData<BusinessPartnersType>(
     [
-      `business-partners-${groupName}-${debouncedCardName}-${debouncedPhone}-${pagination}`,
+      `business-partners-${groupName}-${debouncedCardName}-${debouncedPhone}-${skip}`,
     ],
     generateUrlWithParams("/business-partners", {
-      GroupName: groupName,
-      CardName: cardName,
-      Phone1: phone,
-      Skip: pagination,
+      groupName: groupName,
+      cardName: cardName,
+      phone1: phone,
+      skip: skip,
     })
   );
   return (
@@ -77,30 +77,29 @@ function ClientsList() {
             gap="4"
           >
             <TextInput
-              label="CardName"
+              label={t("labels.card_name")}
               value={cardName}
               setValue={setCardName}
             />
-            <TextInput label="phone" value={phone} setValue={setPhone} />
+            <TextInput
+              label={t("labels.phone")}
+              value={phone}
+              setValue={setPhone}
+            />
             <BusinessPartnersGroup setValue={setGroupName} />
           </Box>
-          <Pagination
-            dataLength={ClientsList?.data.length || 0}
-            pagination={pagination}
-            setPagination={setPagination}
-          />
+          <Pagination dataLength={100} skip={skip} setSkip={setSkip} />
         </Box>
         {!isLoading && (
           <Table variant="striped" colorScheme="gray" textAlign="center">
             <Thead bg={colorMode === "light" ? "gray.300" : "gray.800"}>
               <Tr>
-                <Th>{t("labels.card_code")}</Th>
+                <Th>{t("labels.partner_code")}</Th>
                 <Th>{t("labels.card_name")}</Th>
                 <Th>{t("labels.group_code")}</Th>
                 <Th>{t("labels.group_name")}</Th>
                 <Th>{t("labels.phone")}</Th>
-                <Th>{t("labels.current_account_balanc")}</Th>
-                <Th>{t("labels.currency")}</Th>
+                <Th>{t("labels.current_account_balance")}</Th>
                 <Th>{t("labels.card_type")}</Th>
               </Tr>
             </Thead>
@@ -123,9 +122,16 @@ function ClientsList() {
                       <Td>{el.groupCode}</Td>
                       <Td>{el.groupName}</Td>
                       <Td>{el.phone1}</Td>
-                      <Td>{el.currentAccountBalance}</Td>
-                      <Td>{el.defaultCurrency}</Td>
-                      <Td>{el.cardType}</Td>
+                      <Td>
+                        {el.currentAccountBalance} {el.defaultCurrency}
+                      </Td>
+                      <Td>
+                        {el.cardType === "C"
+                          ? t("labels.customer")
+                          : el.cardType === "S"
+                          ? t("labels.supplier")
+                          : "null"}
+                      </Td>
                     </Tr>
                   ))
                 : null}
@@ -135,7 +141,11 @@ function ClientsList() {
         {!ClientsList?.data.length && !isLoading && <TableNoData />}
         {isLoading && <TableSkeleton />}
       </Box>
-      <BusinessPartnersModal isOpen={isOpen} onClose={onClose} partner={partner} />
+      <BusinessPartnersModal
+        isOpen={isOpen}
+        onClose={onClose}
+        partner={partner}
+      />
     </Box>
   );
 }

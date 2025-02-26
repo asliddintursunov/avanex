@@ -3,12 +3,12 @@ import { Dispatch, SetStateAction } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 type Props = {
-  pagination: number;
-  setPagination: Dispatch<SetStateAction<number>>;
+  skip: number;
+  setSkip: Dispatch<SetStateAction<number>>;
   dataLength: number;
 };
 
-function Pagination({ pagination, setPagination, dataLength }: Props) {
+function Pagination({ skip, setSkip, dataLength }: Props) {
   return (
     <Box
       as="div"
@@ -22,17 +22,17 @@ function Pagination({ pagination, setPagination, dataLength }: Props) {
       <Button
         colorScheme="gray"
         variant={"outline"}
-        disabled={pagination === 0}
-        onClick={() => setPagination((prev) => prev - 1)}
+        disabled={skip === 0}
+        onClick={() => setSkip((prev) => prev - 20)}
       >
         <FaArrowLeft />
       </Button>
-      <Box as="span">{pagination + 1}</Box>
+      <Box as="span">{skip / 20 + 1}</Box>
       <Button
         colorScheme="gray"
         variant={"outline"}
         disabled={dataLength < 20}
-        onClick={() => setPagination((prev) => prev + 1)}
+        onClick={() => setSkip((prev) => prev + 20)}
       >
         <FaArrowRight />
       </Button>

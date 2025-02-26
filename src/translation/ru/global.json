@@ -12,7 +12,37 @@
     "clients_list": "Список клиентов"
   },
   "labels": {
-    "business_partners_group": "Группа деловых партнеров"
+    "business_partners_group": "Группа деловых партнеров",
+    "partner_code": "Партнерский код",
+    "card_name": "Имя партнера",
+    "group_code": "Код группы",
+    "group_name": "Название группы",
+    "phone": "Номер телефона",
+    "current_account_balance": "Баланс текущего счета",
+    "card_type": "Тип партнера",
+    "supplier": "Поставщик",
+    "customer": "Заказчик",
+    "currency": "Валюта",
+    "start_date": "Дата начала",
+    "end_date": "Дата окончания",
+    "doc_num": "Номер документа",
+    "doc_date": "Дата документа",
+    "doc_total": "Общая сумма",
+    "u_type_order": "Тип заказа",
+    "u_firma": "Фирма",
+    "u_jonatildi": "Отправлено",
+    "u_yopildi": "Закрыто",
+    "u_ruxsat": "Разрешение",
+    "sales_person": "Продавец",
+    "sales_person_name": "Имя продавца",
+    "price": "Цена",
+    "u_tip_dostavka": "Тип доставка",
+    "item_name": "Товар",
+    "weight": "Вес",
+    "warehouse_code": "Код склада",
+    "warehouse_name": "Название склада",
+    "paid_to_date": "Выплаченная сумма",
+    "paid_sum": "Выплаченная сумма"
   },
   "buttons": {
     "go_back": "Назад"

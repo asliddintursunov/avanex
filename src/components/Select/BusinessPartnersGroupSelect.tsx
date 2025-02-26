@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
-import { useRQFetchData } from "../../../hooks/useRQfetch";
-import { generateUrlWithParams } from "../../../lib/helpers";
-import { BusinessPartnersGroupType } from "../../../types/business-partners";
+import { useRQFetchData } from "../../hooks/useRQfetch";
+import { generateUrlWithParams } from "../../lib/helpers";
+import { BusinessPartnersGroupType } from "../../types/business-partners";
 import { Box, Select, Skeleton } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
