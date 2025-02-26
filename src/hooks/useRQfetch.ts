@@ -27,7 +27,8 @@ async function fetchData<T>(url: string): Promise<T> {
 
 export function useRQFetchData<T>(
   queryKey: string | Array<string | number>,
-  url: string
+  url: string,
+  refetch?: boolean
 ): UseQueryResult<T, Error> {
   const showToast = useToast();
   const { t } = useTranslation();
@@ -44,7 +45,7 @@ export function useRQFetchData<T>(
         });
         throw new Error("Error fetching data");
       }),
-    refetchInterval: 5000,
-    refetchIntervalInBackground: false,
+    refetchInterval: refetch ? 5000 : undefined,
+    refetchIntervalInBackground: !refetch,
   });
 }

@@ -42,7 +42,14 @@
     "warehouse_code": "Ombor kodi",
     "warehouse_name": "Ombor nomi",
     "paid_to_date": "To'langan summa",
-    "paid_sum": "To'langan summa"
+    "paid_sum": "To'langan summa",
+    "quantity": "Soni",
+    "line_total": "Line total",
+    "row_total": "Row total FC",
+    "item_code": "Mahsulot kodi",
+    "u_rulon": "Rulon",
+    "u_list": "List",
+    "u_kesilgan_soni": "Kesilganlar soni"
   },
   "buttons": {
     "go_back": "Ortga qaytish"

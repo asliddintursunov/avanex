@@ -42,7 +42,14 @@
     "warehouse_code": "Код склада",
     "warehouse_name": "Название склада",
     "paid_to_date": "Выплаченная сумма",
-    "paid_sum": "Выплаченная сумма"
+    "paid_sum": "Выплаченная сумма",
+    "quantity": "Количество",
+    "line_total": "Line total",
+    "row_total": "Row total FC",
+    "item_code": "Код товара",
+    "u_rulon": "Рулон",
+    "u_list": "List",
+    "u_kesilgan_soni": "Количество разрезов"
   },
   "buttons": {
     "go_back": "Назад"

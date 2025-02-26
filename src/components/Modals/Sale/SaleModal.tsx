@@ -20,7 +20,7 @@ type Props = {
   saleItem?: SalesType;
 };
 
-function SalesOrderModal({ isOpen, onClose, saleItem }: Props) {
+function SaleModal({ isOpen, onClose, saleItem }: Props) {
   const { t } = useTranslation();
   const tableInfo: {
     label: string;
@@ -29,7 +29,7 @@ function SalesOrderModal({ isOpen, onClose, saleItem }: Props) {
     [
       {
         label: t("labels.doc_num"),
-        value: saleItem?.docNum,
+        value: `№ ${saleItem?.docNum}`,
       },
       {
         label: t("labels.card_name"),
@@ -40,24 +40,6 @@ function SalesOrderModal({ isOpen, onClose, saleItem }: Props) {
         value: saleItem?.docDate.split("T")[0],
       },
       {
-        label: t("labels.quantity"),
-        value: "Table quantity",
-      },
-    ],
-    [
-      {
-        label: t("labels.price"),
-        value: "Table price USD",
-      },
-      {
-        label: t("labels.price"),
-        value: "Table price UZS",
-      },
-      {
-        label: t("labels.line_total"),
-        value: "Table line total",
-      },
-      {
         label: t("labels.doc_total"),
         value: `${saleItem?.docTotalSys} USD`,
       },
@@ -65,63 +47,30 @@ function SalesOrderModal({ isOpen, onClose, saleItem }: Props) {
         label: t("labels.doc_total"),
         value: `${saleItem?.docTotalFc} UZS`,
       },
-    ],
-    [
-      {
-        label: t("labels.item_code"),
-        value: "Table Item code",
-      },
-      {
-        label: t("labels.item_name"),
-        value: "Table item name",
-      },
-      {
-        label: t("labels.weight"),
-        value: "Table weight",
-      },
       {
         label: t("labels.paid_to_date"),
         value: saleItem?.paidToDate,
       },
+    ],
+    [
       {
         label: t("labels.paid_sum"),
         value: saleItem?.paidSum,
       },
-    ],
-    [
       {
         label: t("labels.u_type_order"),
-        value: "U type order || Backend kutilyapti",
-      },
-      {
-        label: t("labels.u_rulon"),
-        value: "U rulon || Backend kutilyapti",
-      },
-      {
-        label: t("labels.u_list"),
-        value: "U list || Backend kutilyapti",
-      },
-      {
-        label: t("labels.u_kesildi"),
-        value: "U kesildi || Backend kutilyapti",
-      },
-      {
-        label: t("labels.u_kesilgan_soni"),
-        value: "U kesilgan soni || Backend kutilyapti",
+        value: saleItem?.uTypeOrder || "Null",
       },
       {
         label: t("labels.u_tip_dostavka"),
-        value: saleItem?.uTipdostavka,
+        value: saleItem?.uTipdostavka || "Null",
       },
-    ],
-    [
       {
         label: t("labels.u_jonatildi"),
-        value: saleItem?.uJonatildi,
+        value: saleItem?.uJonatildi || "Null",
       },
       { label: t("labels.u_yopildi"), value: saleItem?.uYopildi },
-      { label: t("labels.warehouse_code"), value: "Warehouse code table" },
-      { label: t("labels.warehouse_name"), value: "Warehouse name table" },
+      { label: t("labels.u_firma"), value: saleItem?.uFirma || "Null" },
     ],
   ];
 
@@ -130,9 +79,17 @@ function SalesOrderModal({ isOpen, onClose, saleItem }: Props) {
       <Table variant="striped" colorScheme="gray" textAlign="center">
         <Thead>
           <Tr>
+            <Th>{t("labels.quantity")}</Th>
             <Th>{t("labels.price")}</Th>
+            <Th>{t("labels.price")}</Th>
+            <Th>{t("labels.line_total")}</Th>
+            <Th>{t("labels.row_total")}</Th>
+            <Th>{t("labels.item_code")}</Th>
             <Th>{t("labels.item_name")}</Th>
             <Th>{t("labels.weight")}</Th>
+            <Th>{t("labels.u_rulon")}</Th>
+            <Th>{t("labels.u_list")}</Th>
+            <Th>{t("labels.u_kesilgan_soni")}</Th>
             <Th>{t("labels.warehouse_code")}</Th>
             <Th>{t("labels.warehouse_name")}</Th>
           </Tr>
@@ -141,9 +98,17 @@ function SalesOrderModal({ isOpen, onClose, saleItem }: Props) {
           {saleItem?.documentLines.length &&
             saleItem.documentLines.map((item, index) => (
               <Tr key={index}>
+                <Td>{item.quantity}</Td>
+                <Td>{item.priceSC} USD</Td>
                 <Td>{item.priceFC} UZS</Td>
+                <Td>{item.lineTotal}</Td>
+                <Td>{item.rowTotalFC} UZS</Td>
+                <Td>{item.itemCode}</Td>
                 <Td>{item.itemDescription}</Td>
                 <Td>{item.weight1}</Td>
+                <Td>{item.uRulon || "Null"}</Td>
+                <Td>{item.uList || "Null"}</Td>
+                <Td>{item.uKesilgansoni || "Null"}</Td>
                 <Td>{item.warehouseCode}</Td>
                 <Td>{item.warehouseName}</Td>
               </Tr>
@@ -157,7 +122,7 @@ function SalesOrderModal({ isOpen, onClose, saleItem }: Props) {
     return (
       <TableContainer mb={6}>
         <Table variant="simple">
-          {[0, 1, 2].map((nth) => (
+          {[...Array(tableInfo.length)].map((_, nth) => (
             <Tr key={nth}>
               {tableInfo[nth].map((info, index) => (
                 <Td key={index}>
@@ -190,4 +155,4 @@ function SalesOrderModal({ isOpen, onClose, saleItem }: Props) {
   );
 }
 
-export default SalesOrderModal;
+export default SaleModal;

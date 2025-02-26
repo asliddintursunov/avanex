@@ -18,6 +18,7 @@ export type SalesOrdersType = {
   uJonatildi: string;
   uYopildi: string;
   uRuxsat: string;
+  uNarx: null | string | number;
   documentLines: {
     lineNum: number;
     itemCode: string;

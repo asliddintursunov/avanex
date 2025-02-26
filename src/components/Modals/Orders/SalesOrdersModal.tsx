@@ -52,7 +52,7 @@ function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
       { label: t("labels.u_firma"), value: itemOrder?.uFirma || "Null" },
       {
         label: t("labels.price"),
-        value: "u_Narx",
+        value: itemOrder?.uNarx || "Null",
       },
     ],
   ];
@@ -89,7 +89,7 @@ function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
     return (
       <TableContainer mb={6}>
         <Table variant="simple">
-          {[0, 1, 2].map((nth) => (
+          {[...Array(tableInfo.length)].map((_, nth) => (
             <Tr key={nth}>
               {tableInfo[nth].map((info, index) => (
                 <Td key={index}>

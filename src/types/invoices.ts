@@ -20,6 +20,7 @@ export type SalesType = {
   uJonatildi: string;
   uYopildi: string;
   uRuxsat: string;
+  uNarx: number | null;
   documentLines: {
     lineNum: number;
     itemCode: string;
@@ -39,5 +40,8 @@ export type SalesType = {
     uomCode: string;
     uomName: string;
     lineStatus: string;
+    uRulon: number | null;
+    uList: number | null;
+    uKesilgansoni: number | null;
   }[];
 };

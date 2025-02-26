@@ -21,7 +21,7 @@ import { generateUrlWithParams } from "../../lib/helpers";
 import { SalesType } from "../../types/invoices";
 import TableNoData from "../../components/Table/TableNoData";
 import TableSkeleton from "../../components/Skeleton/TableSkeleton";
-import SalesOrderModal from "../../components/Modals/Orders/SalesOrdersModal";
+import SaleModal from "../../components/Modals/Sale/SaleModal";
 function Sale() {
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
@@ -123,7 +123,6 @@ function Sale() {
                     <Tr
                       key={idx}
                       cursor={"pointer"}
-                      color="black"
                       _hover={{
                         bg: colorMode === "light" ? "gray.300" : "gray.500",
                       }}
@@ -136,8 +135,8 @@ function Sale() {
                       <Td>{el.cardName}</Td>
                       <Td>{el.docDate.split("T")[0]}</Td>
                       <Td>{`${el.docTotalFc} UZS`}</Td>
-                      <Td>{el.paidToDate}</Td>
-                      <Td>{el.paidSum}</Td>
+                      <Td>{el.paidToDate} USD</Td>
+                      <Td>{el.paidSum} USD</Td>
                       <Td>{el.uTypeOrder || "Null"}</Td>
                       <Td>{el.uFirma || "Null"}</Td>
                       <Td>{el.uJonatildi}</Td>
@@ -153,11 +152,7 @@ function Sale() {
         {!Orders?.data.length && !isLoading && <TableNoData />}
         {isLoading && <TableSkeleton />}
       </Box>
-      {/* <SalesOrderModal
-        isOpen={isOpen}
-        onClose={onClose}
-        itemOrder={salesItem}
-      /> */}
+      <SaleModal isOpen={isOpen} onClose={onClose} saleItem={salesItem} />
     </Box>
   );
 }
