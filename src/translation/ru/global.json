@@ -49,7 +49,11 @@
     "item_code": "Код товара",
     "u_rulon": "Рулон",
     "u_list": "List",
-    "u_kesilgan_soni": "Количество разрезов"
+    "u_kesilgan_soni": "Количество разрезов",
+    "group": "Группа",
+    "total_quantity": "Общее количество",
+    "bron": "Брон",
+    "kg": "КГ"
   },
   "buttons": {
     "go_back": "Назад"

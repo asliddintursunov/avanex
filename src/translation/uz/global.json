@@ -49,7 +49,11 @@
     "item_code": "Mahsulot kodi",
     "u_rulon": "Rulon",
     "u_list": "List",
-    "u_kesilgan_soni": "Kesilganlar soni"
+    "u_kesilgan_soni": "Kesilganlar soni",
+    "group": "Guruh",
+    "total_quantity": "Umumiy soni",
+    "bron": "Bron",
+    "kg": "KG"
   },
   "buttons": {
     "go_back": "Ortga qaytish"

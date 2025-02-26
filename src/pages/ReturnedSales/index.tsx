@@ -18,7 +18,6 @@ import { useTranslation } from "react-i18next";
 import DateInput from "../../components/Input/DateInput";
 import TextInput from "../../components/Input/TextInput";
 import Pagination from "../../components/Pagination/Pagination";
-import SalesPerons from "../../components/Select/SalesPersonsSelect";
 import TableNoData from "../../components/Table/TableNoData";
 import TableSkeleton from "../../components/Skeleton/TableSkeleton";
 import ReturnedSalesModal from "../../components/Modals/ReturnedSales/ReturnedSalesModal";
@@ -31,7 +30,6 @@ function ReturnedSales() {
   const [startDate, setStartDate] = useState<string>("");
   const [endDate, setEndDate] = useState<string>("");
   const [cardName, setCardName] = useState<string>("");
-  const [salesPersonName, setSalesPersonName] = useState<string>("");
   const [skip, setSkip] = useState<number>(0);
 
   const [debouncedCardName] = useDebounce(cardName, 500);
@@ -41,13 +39,16 @@ function ReturnedSales() {
     data: ReturnedSalesType[];
   }>(
     [
-      `credit-notes-${startDate}-${endDate}-${debouncedCardName}-${salesPersonName}-${skip}`,
+      `credit-notes-${startDate}-${endDate}-${debouncedCardName}-${skip}`,
+      startDate,
+      endDate,
+      debouncedCardName,
+      skip,
     ],
     generateUrlWithParams("/credit-notes", {
       docDateStart: startDate && endDate ? startDate : undefined,
       docDateEnd: startDate && endDate ? endDate : undefined,
       cardName: debouncedCardName,
-      salesPersonName: salesPersonName,
       skip: skip,
     })
   );
@@ -91,7 +92,6 @@ function ReturnedSales() {
               value={cardName}
               setValue={setCardName}
             />
-            <SalesPerons setValue={setSalesPersonName} />
           </Box>
           <Pagination
             dataLength={ReturnedSales?.data.length || 0}
