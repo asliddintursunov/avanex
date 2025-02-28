@@ -36,7 +36,7 @@ function Sale() {
   const [debouncedCardName] = useDebounce(cardName, 500);
   const [salesItem, setSalesItem] = useState<SalesType>();
 
-  const { data: Orders, isLoading } = useRQFetchData<{
+  const { data: Sales, isLoading } = useRQFetchData<{
     data: SalesType[];
   }>(
     [
@@ -50,6 +50,8 @@ function Sale() {
       skip: skip,
     })
   );
+
+  console.log("Sales", Sales);
 
   return (
     <Box as="div" p={2}>
@@ -94,7 +96,7 @@ function Sale() {
             <SalesPerons setValue={setSalesPersonName} />
           </Box>
           <Pagination
-            dataLength={Orders?.data.length || 0}
+            dataLength={Sales?.data.length || 0}
             skip={skip}
             setSkip={setSkip}
           />
@@ -118,8 +120,8 @@ function Sale() {
               </Tr>
             </Thead>
             <Tbody>
-              {Orders?.data.length
-                ? Orders.data.map((el, idx) => (
+              {Sales?.data.length
+                ? Sales.data.map((el, idx) => (
                     <Tr
                       key={idx}
                       cursor={"pointer"}
@@ -149,7 +151,7 @@ function Sale() {
             </Tbody>
           </Table>
         )}
-        {!Orders?.data.length && !isLoading && <TableNoData />}
+        {!Sales?.data.length && !isLoading && <TableNoData />}
         {isLoading && <TableSkeleton />}
       </Box>
       <SaleModal isOpen={isOpen} onClose={onClose} saleItem={salesItem} />

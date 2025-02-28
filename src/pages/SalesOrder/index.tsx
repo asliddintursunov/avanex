@@ -48,7 +48,8 @@ function SalesOrder() {
       cardName: debouncedCardName,
       salesPersonName: salesPersonName,
       skip: skip,
-    })
+    }),
+    true
   );
 
   return (
@@ -151,11 +152,13 @@ function SalesOrder() {
         {!Orders?.data.length && !isLoading && <TableNoData />}
         {isLoading && <TableSkeleton />}
       </Box>
-      <SalesOrderModal
-        isOpen={isOpen}
-        onClose={onClose}
-        itemOrder={orderItem}
-      />
+      {isOpen && (
+        <SalesOrderModal
+          isOpen={isOpen}
+          onClose={onClose}
+          itemOrder={orderItem}
+        />
+      )}
     </Box>
   );
 }

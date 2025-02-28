@@ -194,7 +194,6 @@ export default function Sidebar() {
             onClick={handleClick}
             display="flex"
             alignItems="center"
-            // gap="3"
             p="3"
             mx="1"
             borderRadius="lg"

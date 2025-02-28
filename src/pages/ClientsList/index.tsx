@@ -88,7 +88,11 @@ function ClientsList() {
             />
             <BusinessPartnersGroup setValue={setGroupName} />
           </Box>
-          <Pagination dataLength={100} skip={skip} setSkip={setSkip} />
+          <Pagination
+            dataLength={ClientsList?.data.length || 0}
+            skip={skip}
+            setSkip={setSkip}
+          />
         </Box>
         {!isLoading && (
           <Table variant="striped" colorScheme="gray" textAlign="center">
@@ -121,7 +125,7 @@ function ClientsList() {
                       <Td>{el.cardName}</Td>
                       <Td>{el.groupCode}</Td>
                       <Td>{el.groupName}</Td>
-                      <Td>{el.phone1}</Td>
+                      <Td>{el.phone1 || "Null"}</Td>
                       <Td>
                         {el.currentAccountBalance} {el.defaultCurrency}
                       </Td>

@@ -15,6 +15,7 @@
     "business_partners_group": "Группа деловых партнеров",
     "partner_code": "Партнерский код",
     "card_name": "Имя партнера",
+    "card_code": "Код партнера",
     "group_code": "Код группы",
     "group_name": "Название группы",
     "phone": "Номер телефона",
@@ -42,7 +43,7 @@
     "warehouse_code": "Код склада",
     "warehouse_name": "Название склада",
     "paid_to_date": "Выплаченная сумма",
-    "paid_sum": "Выплаченная сумма",
+    "paid_sum": "Сумма к оплате",
     "quantity": "Количество",
     "line_total": "Line total",
     "row_total": "Row total FC",
@@ -53,10 +54,27 @@
     "group": "Группа",
     "total_quantity": "Общее количество",
     "bron": "Брон",
-    "kg": "КГ"
+    "kg": "КГ",
+    "yes": "Ха",
+    "no": "Йўқ",
+    "closed": "Ёпилган",
+    "not_closed": "Ёпилмаган",
+    "sent": "Жўнатилди",
+    "not_sent": "Жўнатилмган"
   },
   "buttons": {
-    "go_back": "Назад"
+    "go_back": "Назад",
+    "edit": "Редактировать",
+    "save": "Сохранить",
+    "understandable": "Понятно",
+    "want_to_logout": "Вы хотите выйти из системы?",
+    "yes": "Да",
+    "no": "Нет"
   },
-  "toast_messages": {}
+  "toast_messages": {
+    "error": "Ошибка",
+    "success": "Успех",
+    "success_sending_request": "Запрос был отправлен успешно.",
+    "error_sending_request": "Ошибка при отправке запроса, попробуйте еще раз."
+  }
 }

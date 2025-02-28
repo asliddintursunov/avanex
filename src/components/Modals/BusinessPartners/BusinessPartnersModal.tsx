@@ -31,7 +31,7 @@ function BusinessPartnersModal({ isOpen, onClose, partner }: Props) {
       { label: t("labels.group_name"), value: partner?.groupName },
     ],
     [
-      { label: t("labels.phone"), value: partner?.phone1 },
+      { label: t("labels.phone"), value: partner?.phone1 || "Null" },
       {
         label: t("labels.current_account_balance"),
         value: partner?.currentAccountBalance,

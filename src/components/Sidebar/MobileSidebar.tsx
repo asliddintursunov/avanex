@@ -5,11 +5,9 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  Image,
-  useColorMode,
 } from "@chakra-ui/react";
-import light_logo from "../../../assets/ventum_image.png";
-import dark_logo from "../../../assets/ventum_logo.png";
+// import light_logo from "../../../assets/ventum_image.png";
+// import dark_logo from "../../../assets/ventum_logo.png";
 import Sidebar from "./Sidebar";
 
 // Sidebar based on users' role
@@ -19,7 +17,6 @@ type Props = {
 };
 
 export default function MobileSideBar({ isOpen, onClose }: Props) {
-  const { colorMode } = useColorMode();
   return (
     <Drawer isOpen={isOpen} placement="left" onClose={onClose} size="xs">
       <DrawerOverlay />
@@ -27,11 +24,14 @@ export default function MobileSideBar({ isOpen, onClose }: Props) {
         <DrawerCloseButton />
         <DrawerHeader>
           <div className="flex h-28 items-center justify-center">
-            <Image
+            {/* <Image
               src={colorMode === "dark" ? dark_logo : light_logo}
               h="full"
               w="44"
-            />
+            /> */}
+            <span className="text-3xl font-bold underline underline-offset-[6px]">
+              Avanex
+            </span>
           </div>
         </DrawerHeader>
         <DrawerBody>

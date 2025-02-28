@@ -15,6 +15,7 @@
     "business_partners_group": "Biznes hamkorlar guruhi",
     "partner_code": "Hamkor kodi",
     "card_name": "Hamkor nomi",
+    "card_code": "Hamkor kodi",
     "group_code": "Guruh kodi",
     "group_name": "Guruh nomi",
     "phone": "Telefon raqam",
@@ -42,7 +43,7 @@
     "warehouse_code": "Ombor kodi",
     "warehouse_name": "Ombor nomi",
     "paid_to_date": "To'langan summa",
-    "paid_sum": "To'langan summa",
+    "paid_sum": "To'lanishi kerak bo'lgan summa",
     "quantity": "Soni",
     "line_total": "Line total",
     "row_total": "Row total FC",
@@ -53,10 +54,27 @@
     "group": "Guruh",
     "total_quantity": "Umumiy soni",
     "bron": "Bron",
-    "kg": "KG"
+    "kg": "KG",
+    "yes": "Ха",
+    "no": "Йўқ",
+    "closed": "Ёпилган",
+    "not_closed": "Ёпилмаган",
+    "sent": "Жўнатилди",
+    "not_sent": "Жўнатилмган"
   },
   "buttons": {
-    "go_back": "Ortga qaytish"
+    "go_back": "Ortga qaytish",
+    "edit": "Tahrirlash",
+    "save": "Saqlash",
+    "understandable": "Tushunarli",
+    "want_to_logout": "Rostdan ham tizimdan chiqmoqchimisiz?",
+    "yes": "Ha",
+    "no": "Yo'q"
   },
-  "toast_messages": {}
+  "toast_messages": {
+    "error": "Xatolik",
+    "success": "Muvaffaqiyat",
+    "success_sending_request": "So'rov muvaffaqiyatli yuborildi.",
+    "error_sending_request": "So'rov yuborishda xatolik, qaytadan urunib ko'ring."
+  }
 }

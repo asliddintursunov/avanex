@@ -1,11 +1,11 @@
 import clsx from "clsx";
-import { Image, useColorMode } from "@chakra-ui/react";
+import { useColorMode } from "@chakra-ui/react";
 
 // SIDEBARS
 import Sidebar from "./Sidebar";
 
-import light_logo from "../../../assets/ventum_logo.png";
-import dark_logo from "../../../assets/ventum_logo.png";
+// import light_logo from "../../../assets/ventum_logo.png";
+// import dark_logo from "../../../assets/ventum_logo.png";
 
 export default function DesktopSidebar() {
   const { colorMode } = useColorMode();
@@ -19,12 +19,14 @@ export default function DesktopSidebar() {
     >
       {/* Logo Area */}
       <div className="flex h-28 items-center justify-center">
-        <Image
+        {/* <Image
           src={colorMode === "dark" ? dark_logo : light_logo}
           h="full"
           w="44"
-        />
-        {/* <span className="text-2xl font-bold text-sky-500">BIS-recruting</span> */}
+        /> */}
+        <span className="text-3xl font-bold underline underline-offset-[6px]">
+          Avanex
+        </span>
       </div>
       <Sidebar />
     </div>

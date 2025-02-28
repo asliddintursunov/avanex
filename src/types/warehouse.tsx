@@ -10,5 +10,6 @@ export type ItemsInStockType = {
     warehouseName: string;
     inStock: number;
     ordered: number;
+    weight: number;
   }[];
-}
+};
