@@ -40,7 +40,7 @@ function TotalSales() {
     data: SalesType[];
   }>(
     [
-      `invoices-${startDate}-${endDate}-${debouncedCardName}-${salesPersonName}-${skip}`,
+      `total-sales-invoices-${startDate}-${endDate}-${debouncedCardName}-${salesPersonName}-${skip}`,
     ],
     generateUrlWithParams("/invoices", {
       docDateStart: startDate && endDate ? startDate : undefined,
@@ -49,7 +49,6 @@ function TotalSales() {
       documentStatus: "O",
       salesPersonName: salesPersonName,
       skip: skip,
-      
     })
   );
 
@@ -57,6 +56,8 @@ function TotalSales() {
 
   return (
     <Box as="div" p={2}>
+      <h1 className="text-4xl font-bold mb-4">{t("menus.total_sales")}</h1>
+
       <Box
         overflowX="auto"
         boxShadow="base"

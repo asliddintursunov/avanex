@@ -60,7 +60,15 @@
     "closed": "Ёпилган",
     "not_closed": "Ёпилмаган",
     "sent": "Жўнатилди",
-    "not_sent": "Жўнатилмган"
+    "not_sent": "Жўнатилмган",
+    "smth_dashboard": "Дашборд {{dashboard_name}}",
+    "incomes": "Доход",
+    "expenses": "Исход",
+    "profit": "Прибыль",
+    "sales": "Продажа",
+    "sum": "Сум",
+    "dollar": "Доллар",
+    "count": "Количество"
   },
   "buttons": {
     "go_back": "Назад",

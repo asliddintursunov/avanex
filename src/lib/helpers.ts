@@ -14,3 +14,11 @@ export const generateUrlWithParams = (
 
   return `${baseUrl + endpoint}?${urlParams.toString()}`;
 };
+
+export const formatCurrency = (value: number, currencyType: string) => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: currencyType,
+    minimumFractionDigits: 2,
+  }).format(value);
+};

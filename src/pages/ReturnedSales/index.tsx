@@ -54,6 +54,7 @@ function ReturnedSales() {
   );
   return (
     <Box as="div" p={2}>
+      <h1 className="text-4xl font-bold mb-4">{t("menus.returned_sales")}</h1>
       <Box
         overflowX="auto"
         boxShadow="base"

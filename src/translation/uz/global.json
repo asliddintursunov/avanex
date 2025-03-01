@@ -60,7 +60,15 @@
     "closed": "Ёпилган",
     "not_closed": "Ёпилмаган",
     "sent": "Жўнатилди",
-    "not_sent": "Жўнатилмган"
+    "not_sent": "Жўнатилмган",
+    "smth_dashboard": "Dashbord {{dashboard_name}}",
+    "incomes": "Kirim",
+    "expenses": "Chiqim",
+    "profit": "Foyda",
+    "sales": "Sotuv",
+    "sum": "So'm",
+    "dollar": "Dollar",
+    "count": "Soni"
   },
   "buttons": {
     "go_back": "Ortga qaytish",

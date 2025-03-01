@@ -53,6 +53,7 @@ function ClientsList() {
   );
   return (
     <Box as="div" p={2}>
+      <h1 className="text-4xl font-bold mb-4">{t("menus.clients_list")}</h1>
       <Box
         overflowX="auto"
         boxShadow="base"

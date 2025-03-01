@@ -64,6 +64,8 @@ function Warehouse() {
 
   return (
     <Box as="div" p={2}>
+      <h1 className="text-4xl font-bold mb-4">{t("menus.warehouse")}</h1>
+
       <Box
         overflowX="auto"
         boxShadow="base"
@@ -121,7 +123,6 @@ function Warehouse() {
                   {t("labels.item_name")}
                 </Th>
                 <Th
-                  
                   style={th_td_style}
                   color={colorMode === "light" ? "black" : "gray.300"}
                 >
@@ -223,7 +224,7 @@ function Warehouse() {
                           {warehouseData?.ordered || 0}
                         </Td>
                         <Td style={th_td_style} key={wh + "-kg"}>
-                          {((warehouseData?.weight || 0)).toFixed(2)}
+                          {(warehouseData?.weight || 0).toFixed(2)}
                         </Td>
                       </>
                     );
