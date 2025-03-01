@@ -13,6 +13,7 @@ import {
 import { SalesType } from "../../../types/invoices";
 import ParentModal from "../ParentModal";
 import { useTranslation } from "react-i18next";
+import { formatCurrency } from "../../../lib/helpers";
 
 type Props = {
   isOpen: boolean;
@@ -41,21 +42,21 @@ function SaleModal({ isOpen, onClose, saleItem }: Props) {
       },
       {
         label: t("labels.doc_total"),
-        value: `${saleItem?.docTotalSys} USD`,
+        value: formatCurrency(saleItem?.docTotalSys || 0, "USD"),
       },
       {
         label: t("labels.doc_total"),
-        value: `${saleItem?.docTotalFc} UZS`,
+        value: formatCurrency(saleItem?.docTotalFc || 0, "UZS"),
       },
       {
         label: t("labels.paid_to_date"),
-        value: saleItem?.paidToDate,
+        value: formatCurrency(saleItem?.paidToDate || 0, "USD"),
       },
     ],
     [
       {
         label: t("labels.paid_sum"),
-        value: saleItem?.paidSum,
+        value: formatCurrency(saleItem?.paidSum || 0, "USD"),
       },
       {
         label: t("labels.u_type_order"),
@@ -99,10 +100,10 @@ function SaleModal({ isOpen, onClose, saleItem }: Props) {
             saleItem.documentLines.map((item, index) => (
               <Tr key={index}>
                 <Td>{item.quantity}</Td>
-                <Td>{item.priceSC} USD</Td>
-                <Td>{item.priceFC} UZS</Td>
-                <Td>{item.lineTotal}</Td>
-                <Td>{item.rowTotalFC} UZS</Td>
+                <Td>{formatCurrency(item.priceSC, "USD")}</Td>
+                <Td>{formatCurrency(item.priceFC, "USZ")}</Td>
+                <Td>{formatCurrency(item.lineTotal, "USD")}</Td>
+                <Td>{formatCurrency(item.rowTotalFC, "UZS")}</Td>
                 <Td>{item.itemCode}</Td>
                 <Td>{item.itemDescription}</Td>
                 <Td>{item.weight1}</Td>

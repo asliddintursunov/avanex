@@ -17,11 +17,12 @@ import { useDebounce } from "use-debounce";
 import DateInput from "../../components/Input/DateInput";
 import SalesPerons from "../../components/Select/SalesPersonsSelect";
 import { useRQFetchData } from "../../hooks/useRQfetch";
-import { generateUrlWithParams } from "../../lib/helpers";
+import { formatCurrency, generateUrlWithParams } from "../../lib/helpers";
 import { SalesOrdersType } from "../../types/orders";
 import TableNoData from "../../components/Table/TableNoData";
 import TableSkeleton from "../../components/Skeleton/TableSkeleton";
 import SalesOrderModal from "../../components/Modals/Orders/SalesOrdersModal";
+
 function SalesOrder() {
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
@@ -138,7 +139,7 @@ function SalesOrder() {
                       <Td>№{el.docNum}</Td>
                       <Td>{el.cardName}</Td>
                       <Td>{el.docDate.split("T")[0]}</Td>
-                      <Td>{el.docTotal}</Td>
+                      <Td>{formatCurrency(el.docTotal, "USD")}</Td>
                       <Td>{el.uTypeOrder || "Null"}</Td>
                       <Td>{el.uFirma || "Null"}</Td>
                       <Td>{el.uJonatildi}</Td>

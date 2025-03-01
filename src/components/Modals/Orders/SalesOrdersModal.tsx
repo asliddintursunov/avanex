@@ -17,6 +17,7 @@ import ParentModal from "../ParentModal";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { useFetch } from "../../../hooks/useFetch";
+import { formatCurrency } from "../../../lib/helpers";
 
 type EditedDataType = {
   uJonatildi: string;
@@ -70,7 +71,10 @@ function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
   }[][] = [
     [
       { label: t("labels.doc_num"), value: `№ ${itemOrder?.docNum}` },
-      { label: t("labels.doc_total"), value: `${itemOrder?.docTotalFc} UZS` },
+      {
+        label: t("labels.doc_total"),
+        value: formatCurrency(itemOrder?.docTotalFc || 0, "UZS"),
+      },
       { label: t("labels.card_name"), value: itemOrder?.cardName },
       {
         label: t("labels.doc_date"),
@@ -144,7 +148,7 @@ function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
           {itemOrder?.documentLines.length &&
             itemOrder.documentLines.map((item, index) => (
               <Tr key={index}>
-                <Td>{item.priceFC} UZS</Td>
+                <Td>{formatCurrency(item.priceFC, "UZS")}</Td>
                 <Td>{item.itemDescription}</Td>
                 <Td>{item.weight1}</Td>
                 <Td>{item.warehouseCode}</Td>

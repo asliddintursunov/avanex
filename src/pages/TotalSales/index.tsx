@@ -17,7 +17,7 @@ import { useDebounce } from "use-debounce";
 import DateInput from "../../components/Input/DateInput";
 import SalesPerons from "../../components/Select/SalesPersonsSelect";
 import { useRQFetchData } from "../../hooks/useRQfetch";
-import { generateUrlWithParams } from "../../lib/helpers";
+import { formatCurrency, generateUrlWithParams } from "../../lib/helpers";
 import { SalesType } from "../../types/invoices";
 import TableNoData from "../../components/Table/TableNoData";
 import TableSkeleton from "../../components/Skeleton/TableSkeleton";
@@ -133,7 +133,7 @@ function TotalSales() {
                       <Td>{el.cardName}</Td>
                       <Td>{el.cardCode}</Td>
                       <Td>{el.docDate.split("T")[0]}</Td>
-                      <Td>{`${el.docTotalSys} USD`}</Td>
+                      <Td>{formatCurrency(el.docTotalSys, "USD")}</Td>
                     </Tr>
                   ))
                 : null}

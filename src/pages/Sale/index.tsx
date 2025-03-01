@@ -17,11 +17,12 @@ import { useDebounce } from "use-debounce";
 import DateInput from "../../components/Input/DateInput";
 import SalesPerons from "../../components/Select/SalesPersonsSelect";
 import { useRQFetchData } from "../../hooks/useRQfetch";
-import { generateUrlWithParams } from "../../lib/helpers";
+import { formatCurrency, generateUrlWithParams } from "../../lib/helpers";
 import { SalesType } from "../../types/invoices";
 import TableNoData from "../../components/Table/TableNoData";
 import TableSkeleton from "../../components/Skeleton/TableSkeleton";
 import SaleModal from "../../components/Modals/Sale/SaleModal";
+
 function Sale() {
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
@@ -135,9 +136,9 @@ function Sale() {
                       <Td>№{el.docNum}</Td>
                       <Td>{el.cardName}</Td>
                       <Td>{el.docDate.split("T")[0]}</Td>
-                      <Td>{`${el.docTotalFc} UZS`}</Td>
-                      <Td>{el.paidToDate} USD</Td>
-                      <Td>{el.paidSum} USD</Td>
+                      <Td>{formatCurrency(el.docTotalFc, "UZS")}</Td>
+                      <Td>{formatCurrency(el.paidToDate, "USD")}</Td>
+                      <Td>{formatCurrency(el.paidSum, "USD")}</Td>
                       <Td>{el.uTypeOrder || "Null"}</Td>
                       <Td>{el.uFirma || "Null"}</Td>
                       <Td>{el.uJonatildi}</Td>

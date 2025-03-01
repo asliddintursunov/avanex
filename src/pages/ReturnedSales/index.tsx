@@ -13,7 +13,7 @@ import { useState } from "react";
 import { useDebounce } from "use-debounce";
 import { ReturnedSalesType } from "../../types/returned-sales";
 import { useRQFetchData } from "../../hooks/useRQfetch";
-import { generateUrlWithParams } from "../../lib/helpers";
+import { formatCurrency, generateUrlWithParams } from "../../lib/helpers";
 import { useTranslation } from "react-i18next";
 import DateInput from "../../components/Input/DateInput";
 import TextInput from "../../components/Input/TextInput";
@@ -129,7 +129,7 @@ function ReturnedSales() {
                       <Td>№{el.docNum}</Td>
                       <Td>{el.cardName}</Td>
                       <Td>{el.docDate.split("T")[0]}</Td>
-                      <Td>{`${el.docTotalFc} UZS`}</Td>
+                      <Td>{formatCurrency(el.docTotalFc, "UZS")}</Td>
                       <Td>{el.uTypeOrder || "Null"}</Td>
                       <Td>{el.uFirma || "Null"}</Td>
                     </Tr>
