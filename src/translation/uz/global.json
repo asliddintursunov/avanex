@@ -68,7 +68,8 @@
     "sales": "Sotuv",
     "sum": "So'm",
     "dollar": "Dollar",
-    "count": "Soni"
+    "count": "Soni",
+    "order": "Buyurtma №{{number}}"
   },
   "buttons": {
     "go_back": "Ortga qaytish",
