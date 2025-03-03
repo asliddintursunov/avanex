@@ -9,7 +9,6 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import ParentModal from "../ParentModal";
-import TextInput from "../../Input/TextInput";
 import DateInput from "../../Input/DateInput";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
@@ -20,6 +19,7 @@ import { generateUrlWithParams } from "../../../lib/helpers";
 import { SverkaType } from "../../../types/debtors";
 import Pagination from "../../Pagination/Pagination";
 import { BusinessPartnerByCardNameType } from "../../../types/business-partners";
+import DisabledInput from "../../Input/DisabledInput";
 
 type Props = {
   isOpen: boolean;
@@ -50,8 +50,8 @@ function SverkaModal({ isOpen, onClose, partner }: Props) {
     ],
     generateUrlWithParams("/sales-reports/debitors/sverka", {
       cardCode: partner?.cardCode,
-      startDate: startDate,
-      endDate: endDate,
+      dateStart: startDate,
+      dateEnd: endDate,
       skip: skip,
     })
   );
@@ -64,11 +64,7 @@ function SverkaModal({ isOpen, onClose, partner }: Props) {
         gridTemplateColumns="repeat(2, 1fr)"
         gap="20"
       >
-        <TextInput
-          label="Mijoz"
-          value={partner?.cardName || ""}
-          disabled={true}
-        />
+        <DisabledInput label="Mijoz" value={partner?.cardName || ""} />
         <Box
           as="div"
           display="flex"
@@ -87,11 +83,10 @@ function SverkaModal({ isOpen, onClose, partner }: Props) {
             setValue={setEndDate}
           />
         </Box>
-        <TextInput label="Joriy qarz" value="Joriy qarz" disabled={true} />
-        <TextInput
+        <DisabledInput label="Joriy qarz" value={"Joriy qarz"} />
+        <DisabledInput
           label="Davr boshidagi qoldiq"
-          value="Davr boshidagi qoldiq"
-          disabled={true}
+          value={"Davr boshidagi qoldiq"}
         />
       </Box>
     );
@@ -158,7 +153,7 @@ function SverkaModal({ isOpen, onClose, partner }: Props) {
           )}
         </Box>
         {!SverkaData?.data.length && !isLoading && <TableNoData />}
-        {isLoading && <TableSkeleton />}
+        {isLoading && <TableSkeleton rowSize={5} />}
       </>
     );
   };

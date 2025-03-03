@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import TableSkeleton from "../../components/Skeleton/TableSkeleton";
 import { useRQFetchData } from "../../hooks/useRQfetch";
-import { generateUrlWithParams } from "../../lib/helpers";
+import { formatCurrency, generateUrlWithParams } from "../../lib/helpers";
 import {
   BusinessPartnersType,
   BusinessPartnerByCardNameType,
@@ -107,7 +107,7 @@ function Debtors() {
                       <Td>{el.groupName}</Td>
                       <Td>{el.cardName}</Td>
                       <Td>
-                        {el.currentAccountBalance} {el.defaultCurrency}
+                        {formatCurrency(el.currentAccountBalanceSys, "USD")}
                       </Td>
                     </Tr>
                   ))

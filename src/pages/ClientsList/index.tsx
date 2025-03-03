@@ -128,10 +128,7 @@ function ClientsList() {
                       <Td>{el.groupName}</Td>
                       <Td>{el.phone1 || "Null"}</Td>
                       <Td>
-                        {formatCurrency(
-                          el.currentAccountBalance,
-                          el.defaultCurrency
-                        )}
+                        {formatCurrency(el.currentAccountBalanceSys, "USD")}
                       </Td>
                       <Td>
                         {el.cardType === "C"

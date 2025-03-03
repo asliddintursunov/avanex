@@ -15,13 +15,15 @@ export type BusinessPartnersType = {
     cardCode: string;
     cardName: string;
     cardType: string;
+    currency: string;
+    currentAccountBalance: number;
+    currentAccountBalanceFC: number;
+    currentAccountBalanceSys: number;
+    defaultCurrency: string;
     groupCode: number;
     groupName: string;
-    phone1: null | string | number;
+    phone1: string;
     valid: string;
-    currentAccountBalance: number;
-    currency: string;
-    defaultCurrency: string;
   }[];
 };
 
@@ -29,11 +31,13 @@ export type BusinessPartnerByCardNameType = {
   cardCode: string;
   cardName: string;
   cardType: string;
+  currency: string;
+  currentAccountBalance: number;
+  currentAccountBalanceFC: number;
+  currentAccountBalanceSys: number;
+  defaultCurrency: string;
   groupCode: number;
   groupName: string;
-  phone1: null | string | number;
+  phone1: string;
   valid: string;
-  currentAccountBalance: number;
-  currency: string;
-  defaultCurrency: string;
 };
