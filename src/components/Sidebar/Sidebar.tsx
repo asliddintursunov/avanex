@@ -252,7 +252,7 @@ export default function Sidebar() {
 
             {/* Text */}
             <Text
-              flex="1"
+              ml="4"
               fontSize="sm"
               fontWeight="medium"
               transition="all 0.2s"
