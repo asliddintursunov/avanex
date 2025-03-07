@@ -104,7 +104,20 @@ function SalesOrder() {
           />
         </Box>
         {!isLoading && (
-          <Table colorScheme="gray" textAlign="center">
+          <Table
+            colorScheme="gray"
+            textAlign="center"
+            sx={{
+              "th": {
+                padding: "0.85rem",
+                fontSize: "0.75rem",
+              },
+              "td": {
+                padding: "0.85rem",
+                fontSize: "0.95rem",
+              },
+            }}
+          >
             <Thead bg={colorMode === "light" ? "gray.300" : "gray.800"}>
               <Tr>
                 <Th>{t("labels.doc_num")}</Th>

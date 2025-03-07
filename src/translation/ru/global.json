@@ -69,7 +69,9 @@
     "sum": "Сум",
     "dollar": "Доллар",
     "count": "Количество",
-    "order": "Заказ №{{number}}"
+    "order": "Заказ №{{number}}",
+    "comment": "Комментарий",
+    "no_comment": "Нет комментария"
   },
   "buttons": {
     "go_back": "Назад",

@@ -44,7 +44,11 @@ const Login = () => {
       setCookie("access_token", response.data.token);
       setCookie("get_me", JSON.stringify(response.data.employee));
       setCookie("job_title", response.data.employee.jobTitle);
-      navigate("/dashboard");
+      if (response.data.employee.jobTitle.toLowerCase() === "bugalter") {
+        navigate("/sales-order");
+      } else if (response.data.employee.jobTitle.toLowerCase() === "manager") {
+        navigate("/dashboard");
+      }
     } catch (error) {
       console.error("Login Error:", error);
     } finally {

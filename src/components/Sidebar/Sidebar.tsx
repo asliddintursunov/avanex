@@ -42,12 +42,16 @@ export default function Sidebar() {
   const job_title = (getCookie("job_title") as "Bugalter" | "Manager") || "";
 
   const Main: SidebarType[] = [
-    {
-      path: "/dashboard",
-      value: t("menus.dashboard"),
-      icon: MdDashboard,
-      children: [],
-    },
+    ...(job_title === "Manager"
+      ? [
+          {
+            path: "/dashboard",
+            value: t("menus.dashboard"),
+            icon: MdDashboard,
+            children: [],
+          },
+        ]
+      : []),
   ];
 
   const Sales: SidebarType[] = [
@@ -174,7 +178,13 @@ export default function Sidebar() {
   ];
 
   // Recursive SidebarItem component
-  const SidebarItem = ({ item }: { item: SidebarType }) => {
+  const SidebarItem = ({
+    item,
+    isChild,
+  }: {
+    item: SidebarType;
+    isChild: boolean;
+  }) => {
     const { colorMode } = useColorMode();
     const navigate = useNavigate();
     const location = useLocation();
@@ -194,8 +204,8 @@ export default function Sidebar() {
             onClick={handleClick}
             display="flex"
             alignItems="center"
-            p="3"
-            mx="1"
+            // p="2"
+            m="1"
             borderRadius="lg"
             cursor="pointer"
             position="relative"
@@ -204,8 +214,16 @@ export default function Sidebar() {
             bgColor={
               location.pathname === item.path
                 ? colorMode === "light"
-                  ? "gray.200"
+                  ? isChild
+                    ? "gray.300"
+                    : "gray.200"
+                  : isChild
+                  ? "gray.800"
                   : "gray.600"
+                : isChild
+                ? colorMode === "light"
+                  ? "gray.100"
+                  : "gray.700"
                 : ""
             }
             _hover={{
@@ -257,7 +275,7 @@ export default function Sidebar() {
           {hasChildren && (
             <AccordionPanel>
               {item.children.map((child, index) => (
-                <SidebarItem key={index} item={child} />
+                <SidebarItem isChild={true} key={index} item={child} />
               ))}
             </AccordionPanel>
           )}
@@ -271,7 +289,7 @@ export default function Sidebar() {
       {Menus.map((menuGroup, index) => (
         <Box key={index} mb="4">
           {menuGroup.map((item, idx) => (
-            <SidebarItem key={idx} item={item} />
+            <SidebarItem isChild={false} key={idx} item={item} />
           ))}
         </Box>
       ))}

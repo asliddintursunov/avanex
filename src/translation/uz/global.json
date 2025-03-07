@@ -69,7 +69,9 @@
     "sum": "So'm",
     "dollar": "Dollar",
     "count": "Soni",
-    "order": "Buyurtma №{{number}}"
+    "order": "Buyurtma №{{number}}",
+    "comment": "Izoh",
+    "no_comment": "Izoh mavjud emas"
   },
   "buttons": {
     "go_back": "Ortga qaytish",

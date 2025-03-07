@@ -11,6 +11,7 @@ import {
   Th,
   Select,
   Button,
+  useColorMode,
 } from "@chakra-ui/react";
 import { SalesOrdersType } from "../../../types/orders";
 import ParentModal from "../ParentModal";
@@ -20,6 +21,9 @@ import { useFetch } from "../../../hooks/useFetch";
 import { formatCurrency } from "../../../lib/helpers";
 
 type EditedDataType = {
+  uTypeOrder: string;
+  uFirma: string;
+  uTipdostavka: number;
   uJonatildi: string;
   uYopildi: string;
   uRuxsat: string;
@@ -33,6 +37,7 @@ type Props = {
 
 function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
   const { t } = useTranslation();
+  const { colorMode } = useColorMode();
   const { sendData } = useFetch();
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -42,6 +47,9 @@ function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
     uJonatildi: itemOrder?.uJonatildi || "",
     uYopildi: itemOrder?.uYopildi || "",
     uRuxsat: itemOrder?.uRuxsat || "",
+    uTypeOrder: itemOrder?.uTypeOrder || "",
+    uFirma: itemOrder?.uFirma || "",
+    uTipdostavka: itemOrder?.uTipdostavka || 0,
   });
 
   const handleSent = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -132,6 +140,46 @@ function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
     ],
   ];
 
+  const CommentHeader = (): JSX.Element => {
+    return (
+      <Flex
+        align="center"
+        ml="6"
+        mt="2"
+        px="3"
+        py="2"
+        borderLeft="2px solid"
+        borderColor={colorMode === "light" ? "gray.300" : "gray.600"}
+      >
+        <Text
+          as="span"
+          fontSize="md"
+          fontWeight="medium"
+          color={colorMode === "light" ? "gray.700" : "gray.300"}
+        >
+          {t("labels.comment")}:
+        </Text>
+        <Text
+          as="span"
+          fontSize="md"
+          ml="2"
+          fontStyle={itemOrder?.comments ? "normal" : "italic"}
+          color={
+            itemOrder?.comments
+              ? colorMode === "light"
+                ? "black"
+                : "white"
+              : colorMode === "light"
+              ? "gray.500"
+              : "gray.400"
+          }
+        >
+          {itemOrder?.comments || t("labels.no_comment")}
+        </Text>
+      </Flex>
+    );
+  };
+
   const ItemOrderTable = (): JSX.Element => {
     return (
       <Table variant="striped" colorScheme="gray" textAlign="center">
@@ -163,6 +211,7 @@ function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
   const ModalBody = (): JSX.Element => {
     return (
       <TableContainer mb={6}>
+        <CommentHeader />
         <Table variant="simple">
           {[...Array(tableInfo.length)].map((_, nth) => (
             <Tr key={nth}>

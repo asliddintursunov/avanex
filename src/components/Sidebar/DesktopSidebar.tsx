@@ -13,7 +13,7 @@ export default function DesktopSidebar() {
   return (
     <div
       className={clsx(
-        "hidden lg:flex min-h-screen w-96 flex-col shadow-xl px-6",
+        "hidden lg:flex min-h-screen w-96 flex-col shadow-xl pl-1 pr-3",
         colorMode === "light" ? "bg-white" : "bg-gray-800"
       )}
     >

@@ -1,4 +1,5 @@
 export type SalesOrdersType = {
+  comments: string;
   docEntry: number;
   docNum: number;
   cardCode: string;
@@ -37,6 +38,7 @@ export type SalesOrdersType = {
     weight1: number;
     uomCode: string;
     uomName: string;
+    uNarx: null;
     lineStatus: string;
   }[];
 };
