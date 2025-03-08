@@ -152,7 +152,7 @@ function SalesOrder() {
                       <Td>№{el.docNum}</Td>
                       <Td>{el.cardName}</Td>
                       <Td>{el.docDate.split("T")[0]}</Td>
-                      <Td>{formatCurrency(el.docTotal, "USD")}</Td>
+                      <Td>{formatCurrency(el.docTotalFc, "UZS")}</Td>
                       <Td>{el.uTypeOrder || "Null"}</Td>
                       <Td>{el.uFirma || "Null"}</Td>
                       <Td>{el.uJonatildi}</Td>

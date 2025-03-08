@@ -42,21 +42,17 @@ function ReturnedSalesModal({ isOpen, onClose, returnedSaleItem }: Props) {
       },
       {
         label: t("labels.doc_total"),
-        value: formatCurrency(returnedSaleItem?.docTotalSys || 0, "USD"),
-      },
-      {
-        label: t("labels.doc_total"),
-        value: formatCurrency(returnedSaleItem?.docTotalFc || 0, "UZS"),
+        value: formatCurrency(returnedSaleItem?.docTotalFc || 0, "USZ"),
       },
       {
         label: t("labels.paid_to_date"),
-        value: formatCurrency(returnedSaleItem?.paidToDate || 0, "USD"),
+        value: formatCurrency(returnedSaleItem?.paidToDateFC || 0, "USZ"),
       },
     ],
     [
       {
         label: t("labels.paid_sum"),
-        value: formatCurrency(returnedSaleItem?.paidSum || 0, "USD"),
+        value: formatCurrency(returnedSaleItem?.paidSumFc || 0, "USZ"),
       },
       {
         label: t("labels.u_type_order"),
@@ -82,12 +78,11 @@ function ReturnedSalesModal({ isOpen, onClose, returnedSaleItem }: Props) {
           <Tr>
             <Th>{t("labels.quantity")}</Th>
             <Th>{t("labels.price")}</Th>
-            <Th>{t("labels.price")}</Th>
-            <Th>{t("labels.line_total")}</Th>
             <Th>{t("labels.row_total")}</Th>
             <Th>{t("labels.item_code")}</Th>
             <Th>{t("labels.item_name")}</Th>
             <Th>{t("labels.weight")}</Th>
+            <Th>{t("labels.measure_unit")}</Th>
             <Th>{t("labels.u_rulon")}</Th>
             <Th>{t("labels.u_list")}</Th>
             <Th>{t("labels.u_kesilgan_soni")}</Th>
@@ -100,13 +95,12 @@ function ReturnedSalesModal({ isOpen, onClose, returnedSaleItem }: Props) {
             returnedSaleItem.documentLines.map((item, index) => (
               <Tr key={index}>
                 <Td>{item.quantity}</Td>
-                <Td>{formatCurrency(item.priceSC, "USD")}</Td>
                 <Td>{formatCurrency(item.priceFC, "UZS")}</Td>
-                <Td>{formatCurrency(item.lineTotal, "USD")}</Td>
                 <Td>{formatCurrency(item.rowTotalFC, "UZS")}</Td>
                 <Td>{item.itemCode}</Td>
                 <Td>{item.itemDescription}</Td>
                 <Td>{item.weight1}</Td>
+                <Td>{item.uomName}</Td>
                 <Td>{item.uRulon || "Null"}</Td>
                 <Td>{item.uList || "Null"}</Td>
                 <Td>{item.uKesilgansoni || "Null"}</Td>

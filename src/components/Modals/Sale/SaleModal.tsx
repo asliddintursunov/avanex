@@ -42,22 +42,14 @@ function SaleModal({ isOpen, onClose, saleItem }: Props) {
       },
       {
         label: t("labels.doc_total"),
-        value: formatCurrency(saleItem?.docTotalSys || 0, "USD"),
-      },
-      {
-        label: t("labels.doc_total"),
         value: formatCurrency(saleItem?.docTotalFc || 0, "UZS"),
       },
       {
         label: t("labels.paid_to_date"),
-        value: formatCurrency(saleItem?.paidToDate || 0, "USD"),
+        value: formatCurrency(saleItem?.paidToDateFC || 0, "UZS"),
       },
     ],
     [
-      {
-        label: t("labels.paid_sum"),
-        value: formatCurrency(saleItem?.paidSum || 0, "USD"),
-      },
       {
         label: t("labels.u_type_order"),
         value: saleItem?.uTypeOrder || "Null",
@@ -82,8 +74,6 @@ function SaleModal({ isOpen, onClose, saleItem }: Props) {
           <Tr>
             <Th>{t("labels.quantity")}</Th>
             <Th>{t("labels.price")}</Th>
-            <Th>{t("labels.price")}</Th>
-            <Th>{t("labels.line_total")}</Th>
             <Th>{t("labels.row_total")}</Th>
             <Th>{t("labels.item_code")}</Th>
             <Th>{t("labels.item_name")}</Th>
@@ -100,9 +90,7 @@ function SaleModal({ isOpen, onClose, saleItem }: Props) {
             saleItem.documentLines.map((item, index) => (
               <Tr key={index}>
                 <Td>{item.quantity}</Td>
-                <Td>{formatCurrency(item.priceSC, "USD")}</Td>
                 <Td>{formatCurrency(item.priceFC, "USZ")}</Td>
-                <Td>{formatCurrency(item.lineTotal, "USD")}</Td>
                 <Td>{formatCurrency(item.rowTotalFC, "UZS")}</Td>
                 <Td>{item.itemCode}</Td>
                 <Td>{item.itemDescription}</Td>

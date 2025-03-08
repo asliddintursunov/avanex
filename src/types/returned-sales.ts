@@ -11,6 +11,10 @@ export type ReturnedSalesType = {
   docTotal: number;
   docTotalFc: number;
   docTotalSys: number;
+  paidSumFc: number;
+  paidSumSc: number;
+  paidToDateFC: number;
+  paidToDateSys: number;
   paidToDate: number;
   paidSum: number;
   documentStatus: string;
@@ -21,6 +25,7 @@ export type ReturnedSalesType = {
   uYopildi: string;
   uRuxsat: string;
   uNarx: null | number | string;
+
   documentLines: {
     lineNum: number;
     itemCode: string;

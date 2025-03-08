@@ -107,7 +107,7 @@ function Debtors() {
                       <Td>{el.groupName}</Td>
                       <Td>{el.cardName}</Td>
                       <Td>
-                        {formatCurrency(el.currentAccountBalanceSys, "USD")}
+                        {formatCurrency(el.currentAccountBalanceFC, "USZ")}
                       </Td>
                     </Tr>
                   ))

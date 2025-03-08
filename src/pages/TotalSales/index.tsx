@@ -133,7 +133,7 @@ function TotalSales() {
                       <Td>{el.cardName}</Td>
                       <Td>{el.cardCode}</Td>
                       <Td>{el.docDate.split("T")[0]}</Td>
-                      <Td>{formatCurrency(el.docTotalSys, "USD")}</Td>
+                      <Td>{formatCurrency(el.docTotalFc, "USZ")}</Td>
                     </Tr>
                   ))
                 : null}

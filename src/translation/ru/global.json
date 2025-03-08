@@ -45,8 +45,8 @@
     "paid_to_date": "Выплаченная сумма",
     "paid_sum": "Сумма к оплате",
     "quantity": "Количество",
-    "line_total": "Line total",
-    "row_total": "Row total FC",
+    "line_total": "Общая сумма",
+    "row_total": "Общая сумма",
     "item_code": "Код товара",
     "u_rulon": "Рулон",
     "u_list": "List",
@@ -71,7 +71,8 @@
     "count": "Количество",
     "order": "Заказ №{{number}}",
     "comment": "Комментарий",
-    "no_comment": "Нет комментария"
+    "no_comment": "Нет комментария",
+    "measure_unit": "Единица измерения"
   },
   "buttons": {
     "go_back": "Назад",

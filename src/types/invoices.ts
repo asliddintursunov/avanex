@@ -13,6 +13,10 @@ export type SalesType = {
   docTotalSys: number;
   paidToDate: number;
   paidSum: number;
+  paidSumFc: 0;
+  paidSumSc: 0;
+  paidToDateFC: 0;
+  paidToDateSys: 0;
   documentStatus: string;
   uTypeOrder: string | null;
   uFirma: string | null;

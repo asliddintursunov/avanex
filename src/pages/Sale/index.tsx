@@ -137,8 +137,8 @@ function Sale() {
                       <Td>{el.cardName}</Td>
                       <Td>{el.docDate.split("T")[0]}</Td>
                       <Td>{formatCurrency(el.docTotalFc, "UZS")}</Td>
-                      <Td>{formatCurrency(el.paidToDate, "USD")}</Td>
-                      <Td>{formatCurrency(el.paidSum, "USD")}</Td>
+                      <Td>{formatCurrency(el.paidToDateFC, "UZS")}</Td>
+                      <Td>{formatCurrency(el.paidSumFc, "UZS")}</Td>
                       <Td>{el.uTypeOrder || "Null"}</Td>
                       <Td>{el.uFirma || "Null"}</Td>
                       <Td>{el.uJonatildi}</Td>

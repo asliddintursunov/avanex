@@ -45,8 +45,8 @@
     "paid_to_date": "To'langan summa",
     "paid_sum": "To'lanishi kerak bo'lgan summa",
     "quantity": "Soni",
-    "line_total": "Line total",
-    "row_total": "Row total FC",
+    "line_total": "Umimiy narxi",
+    "row_total": "Umumiy narxi",
     "item_code": "Mahsulot kodi",
     "u_rulon": "Rulon",
     "u_list": "List",
@@ -71,7 +71,8 @@
     "count": "Soni",
     "order": "Buyurtma №{{number}}",
     "comment": "Izoh",
-    "no_comment": "Izoh mavjud emas"
+    "no_comment": "Izoh mavjud emas",
+    "measure_unit": "O'lchov birligi"
   },
   "buttons": {
     "go_back": "Ortga qaytish",
