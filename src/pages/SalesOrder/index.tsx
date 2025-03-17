@@ -22,6 +22,7 @@ import { SalesOrdersType } from "../../types/orders";
 import TableNoData from "../../components/Table/TableNoData";
 import TableSkeleton from "../../components/Skeleton/TableSkeleton";
 import SalesOrderModal from "../../components/Modals/Orders/SalesOrdersModal";
+import DownloadSalesOrder from "../../components/Button/DownloadButton/DownloadSalesOrder";
 
 function SalesOrder() {
   const { colorMode } = useColorMode();
@@ -154,7 +155,7 @@ function SalesOrder() {
                       <Td>{el.cardName}</Td>
                       <Td>{el.docDate.split("T")[0]}</Td>
                       <Td>{formatCurrency(el.docTotalFc, "UZS")}</Td>
-                      <Td>{el.uTipdostavkaName || "Null"}</Td>
+                      <Td>{el.uTypeOrder || "Null"}</Td>
                       <Td>{el.uFirma || "Null"}</Td>
                       <Td>{el.uJonatildi}</Td>
                       <Td>{el.uTipdostavkaName || "Null"}</Td>
@@ -169,6 +170,7 @@ function SalesOrder() {
         )}
         {!Orders?.data.length && !isLoading && <TableNoData />}
         {isLoading && <TableSkeleton />}
+        <DownloadSalesOrder timeInterval={`${startDate}&&${endDate}`} />
       </Box>
       {isOpen && (
         <SalesOrderModal

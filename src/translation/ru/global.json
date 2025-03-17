@@ -82,7 +82,8 @@
     "understandable": "Понятно",
     "want_to_logout": "Вы хотите выйти из системы?",
     "yes": "Да",
-    "no": "Нет"
+    "no": "Нет",
+    "download_as_excel": "Скачать как Excel"
   },
   "toast_messages": {
     "error": "Ошибка",

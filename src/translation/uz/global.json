@@ -82,7 +82,8 @@
     "understandable": "Tushunarli",
     "want_to_logout": "Rostdan ham tizimdan chiqmoqchimisiz?",
     "yes": "Ha",
-    "no": "Yo'q"
+    "no": "Yo'q",
+    "download_as_excel": "Excel ga ko'chirish"
   },
   "toast_messages": {
     "error": "Xatolik",

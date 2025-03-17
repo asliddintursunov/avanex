@@ -18,6 +18,7 @@ import TextInput from "../../components/Input/TextInput";
 import Pagination from "../../components/Pagination/Pagination";
 import TableNoData from "../../components/Table/TableNoData";
 import TableSkeleton from "../../components/Skeleton/TableSkeleton";
+import DownloadWarehouse from "../../components/Button/DownloadButton/DownloadWarehouse";
 
 function Warehouse() {
   const { colorMode } = useColorMode();
@@ -235,6 +236,7 @@ function Warehouse() {
             </Tbody>
           </Table>
         )}
+        <DownloadWarehouse ItemsInStock={ItemsInStock?.data || []} />
         {!ItemsInStock?.data.length && !isLoading && <TableNoData />}
         {isLoading && <TableSkeleton />}
       </Box>
