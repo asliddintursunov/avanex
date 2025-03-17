@@ -25,7 +25,7 @@ export type ReturnedSalesType = {
   uYopildi: string;
   uRuxsat: string;
   uNarx: null | number | string;
-
+  uSpecification: string;
   documentLines: {
     lineNum: number;
     itemCode: string;
@@ -42,8 +42,8 @@ export type ReturnedSalesType = {
     warehouseCode: string;
     warehouseName: string;
     weight1: number;
-    uomCode: string;
-    uomName: string;
+    uoMCode: string;
+    uoMName: string;
     lineStatus: string;
     uRulon: null | string;
     uList: null | string;

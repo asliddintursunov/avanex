@@ -109,6 +109,7 @@ function ReturnedSales() {
                 <Th>{t("labels.doc_date")}</Th>
                 <Th>{t("labels.doc_total")}</Th>
                 <Th>{t("labels.u_type_order")}</Th>
+                <Th>{t("labels.specification")}</Th>
                 <Th>{t("labels.u_firma")}</Th>
               </Tr>
             </Thead>
@@ -131,6 +132,7 @@ function ReturnedSales() {
                       <Td>{el.docDate.split("T")[0]}</Td>
                       <Td>{formatCurrency(el.docTotalFc, "UZS")}</Td>
                       <Td>{el.uTypeOrder || "Null"}</Td>
+                      <Td>{el.uSpecification || "Null"}</Td>
                       <Td>{el.uFirma || "Null"}</Td>
                     </Tr>
                   ))

@@ -48,6 +48,10 @@ function ReturnedSalesModal({ isOpen, onClose, returnedSaleItem }: Props) {
         label: t("labels.paid_to_date"),
         value: formatCurrency(returnedSaleItem?.paidToDateFC || 0, "USZ"),
       },
+      {
+        label: t("labels.specification"),
+        value: returnedSaleItem?.uSpecification || "Null",
+      },
     ],
     [
       {
@@ -100,7 +104,7 @@ function ReturnedSalesModal({ isOpen, onClose, returnedSaleItem }: Props) {
                 <Td>{item.itemCode}</Td>
                 <Td>{item.itemDescription}</Td>
                 <Td>{item.weight1}</Td>
-                <Td>{item.uomName}</Td>
+                <Td>{item.uoMName}</Td>
                 <Td>{item.uRulon || "Null"}</Td>
                 <Td>{item.uList || "Null"}</Td>
                 <Td>{item.uKesilgansoni || "Null"}</Td>

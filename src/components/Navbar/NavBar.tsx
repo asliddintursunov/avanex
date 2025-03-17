@@ -29,8 +29,8 @@ import { BiLogOut } from "react-icons/bi";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 
-import uz_flag from "../../../assets/uzb_flag.webp";
-import ru_flag from "../../../assets/ru_flag.png";
+import uz_flag from "../../../assets/img/uzb_flag.webp";
+import ru_flag from "../../../assets/img/ru_flag.png";
 
 const NavBar = ({ onOpen }: { onOpen: () => void }) => {
   const { colorMode, toggleColorMode } = useColorMode();

@@ -92,7 +92,7 @@ function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
     [
       {
         label: t("labels.u_tip_dostavka"),
-        value: itemOrder?.uTipdostavka || "Null",
+        value: itemOrder?.uTipdostavkaName || "Null",
       },
       {
         label: t("labels.u_jonatildi"),
@@ -136,6 +136,10 @@ function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
       {
         label: t("labels.price"),
         value: itemOrder?.uNarx || "Null",
+      },
+      {
+        label: t("labels.specification"),
+        value: itemOrder?.uSpecification || "Null",
       },
     ],
   ];
@@ -200,7 +204,7 @@ function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
                 <Td>{formatCurrency(item.priceFC, "UZS")}</Td>
                 <Td>{item.itemDescription}</Td>
                 <Td>{item.weight1}</Td>
-                <Td>{item.uomName}</Td>
+                <Td>{item.uoMName}</Td>
                 <Td>{item.warehouseCode}</Td>
                 <Td>{item.warehouseName}</Td>
               </Tr>

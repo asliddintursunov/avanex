@@ -5,6 +5,8 @@ export type ItemsInStockType = {
   groupName: string;
   inStockTotal: number;
   orderedTotal: string;
+  uoMCode: string;
+  uoMName: string;
   documentLines: {
     warehouseCode: string;
     warehouseName: string;

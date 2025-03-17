@@ -24,6 +24,7 @@ export type SalesType = {
   uJonatildi: string;
   uYopildi: string;
   uRuxsat: string;
+  uSpecification: string;
   uNarx: number | null;
   documentLines: {
     lineNum: number;
@@ -41,8 +42,8 @@ export type SalesType = {
     warehouseCode: string;
     warehouseName: string;
     weight1: number;
-    uomCode: string;
-    uomName: string;
+    uoMCode: string;
+    uoMName: string;
     lineStatus: string;
     uRulon: number | null;
     uList: number | null;

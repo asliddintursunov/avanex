@@ -14,6 +14,8 @@ export type SalesOrdersType = {
   docTotalSys: number;
   documentStatus: string;
   uTypeOrder: string;
+  uTipdostavkaName: string;
+  uSpecification: string;
   uFirma: string;
   uTipdostavka: number;
   uJonatildi: string;
@@ -36,8 +38,8 @@ export type SalesOrdersType = {
     warehouseCode: string;
     warehouseName: string;
     weight1: number;
-    uomCode: string;
-    uomName: string;
+    uoMCode: string;
+    uoMName: string;
     uNarx: null;
     lineStatus: string;
   }[];

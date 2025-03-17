@@ -115,6 +115,7 @@ function Sale() {
                 <Th>{t("labels.u_firma")}</Th>
                 <Th>{t("labels.u_jonatildi")}</Th>
                 <Th>{t("labels.u_yopildi")}</Th>
+                <Th>{t("labels.specification")}</Th>
                 <Th>{t("labels.u_ruxsat")}</Th>
                 <Th>{t("labels.sales_person_name")}</Th>
               </Tr>
@@ -143,6 +144,7 @@ function Sale() {
                       <Td>{el.uFirma || "Null"}</Td>
                       <Td>{el.uJonatildi}</Td>
                       <Td>{el.uYopildi}</Td>
+                      <Td>{el.uSpecification || "Null"}</Td>
                       <Td>{el.uRuxsat}</Td>
                       <Td>{el.salesPersonName}</Td>
                     </Tr>

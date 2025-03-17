@@ -108,11 +108,11 @@ function SalesOrder() {
             colorScheme="gray"
             textAlign="center"
             sx={{
-              "th": {
+              th: {
                 padding: "0.85rem",
                 fontSize: "0.75rem",
               },
-              "td": {
+              td: {
                 padding: "0.85rem",
                 fontSize: "0.95rem",
               },
@@ -127,7 +127,8 @@ function SalesOrder() {
                 <Th>{t("labels.u_type_order")}</Th>
                 <Th>{t("labels.u_firma")}</Th>
                 <Th>{t("labels.u_jonatildi")}</Th>
-                <Th>{t("labels.u_yopildi")}</Th>
+                <Th>{t("labels.u_tip_dostavka")}</Th>
+                <Th>{t("labels.specification")}</Th>
                 <Th>{t("labels.u_ruxsat")}</Th>
                 <Th>{t("labels.sales_person_name")}</Th>
               </Tr>
@@ -153,10 +154,11 @@ function SalesOrder() {
                       <Td>{el.cardName}</Td>
                       <Td>{el.docDate.split("T")[0]}</Td>
                       <Td>{formatCurrency(el.docTotalFc, "UZS")}</Td>
-                      <Td>{el.uTypeOrder || "Null"}</Td>
+                      <Td>{el.uTipdostavkaName || "Null"}</Td>
                       <Td>{el.uFirma || "Null"}</Td>
                       <Td>{el.uJonatildi}</Td>
-                      <Td>{el.uYopildi}</Td>
+                      <Td>{el.uTipdostavkaName || "Null"}</Td>
+                      <Td>{el.uSpecification || "Null"}</Td>
                       <Td>{el.uRuxsat}</Td>
                       <Td>{el.salesPersonName}</Td>
                     </Tr>

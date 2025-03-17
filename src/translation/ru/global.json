@@ -72,7 +72,8 @@
     "order": "Заказ №{{number}}",
     "comment": "Комментарий",
     "no_comment": "Нет комментария",
-    "measure_unit": "Единица измерения"
+    "measure_unit": "Единица измерения",
+    "specification": "Спецификация"
   },
   "buttons": {
     "go_back": "Назад",

@@ -111,6 +111,7 @@ function TotalSales() {
                 <Th>{t("labels.doc_num")}</Th>
                 <Th>{t("labels.card_name")}</Th>
                 <Th>{t("labels.card_code")}</Th>
+                <Th>{t("labels.specification")}</Th>
                 <Th>{t("labels.doc_date")}</Th>
                 <Th>{t("labels.doc_total")}</Th>
               </Tr>
@@ -132,6 +133,7 @@ function TotalSales() {
                       <Td>№{el.docNum}</Td>
                       <Td>{el.cardName}</Td>
                       <Td>{el.cardCode}</Td>
+                      <Td>{el.uSpecification || "Null"}</Td>
                       <Td>{el.docDate.split("T")[0]}</Td>
                       <Td>{formatCurrency(el.docTotalFc, "USZ")}</Td>
                     </Tr>

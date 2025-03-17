@@ -48,6 +48,10 @@ function SaleModal({ isOpen, onClose, saleItem }: Props) {
         label: t("labels.paid_to_date"),
         value: formatCurrency(saleItem?.paidToDateFC || 0, "UZS"),
       },
+      {
+        label: t("labels.specification"),
+        value: saleItem?.uSpecification || "Null",
+      },
     ],
     [
       {

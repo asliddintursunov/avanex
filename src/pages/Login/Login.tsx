@@ -8,13 +8,14 @@ import {
   ViewOffIcon,
   Button,
 } from "@chakra-ui/icons";
-import { useColorMode } from "@chakra-ui/react";
+import { Image, useColorMode } from "@chakra-ui/react";
 import clsx from "clsx";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import { setCookie } from "../../lib/actions";
 import { LoginSuccessType, LoginRequestType } from "../../types/accounts";
+import avanex_image from "../../../assets/img/avanex-image.png";
 
 const Login = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -141,7 +142,9 @@ const Login = () => {
       <Box
         as="div"
         className="flex-1 hidden lg:grid place-content-center bg-white h-screen rounded-bl-[25%]"
-      ></Box>
+      >
+        <Image src={avanex_image} border="none" borderRadius="full" />
+      </Box>
     </Box>
   );
 };

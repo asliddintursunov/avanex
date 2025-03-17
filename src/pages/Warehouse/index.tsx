@@ -224,7 +224,8 @@ function Warehouse() {
                           {warehouseData?.ordered || 0}
                         </Td>
                         <Td style={th_td_style} key={wh + "-kg"}>
-                          {(warehouseData?.weight || 0).toFixed(2)}
+                          {/* {(warehouseData?.weight || 0).toFixed(2)} */}
+                          {item.uoMCode}
                         </Td>
                       </>
                     );

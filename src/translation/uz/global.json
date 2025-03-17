@@ -72,7 +72,8 @@
     "order": "Buyurtma №{{number}}",
     "comment": "Izoh",
     "no_comment": "Izoh mavjud emas",
-    "measure_unit": "O'lchov birligi"
+    "measure_unit": "O'lchov birligi",
+    "specification": "Spetsifikatsiya"
   },
   "buttons": {
     "go_back": "Ortga qaytish",
