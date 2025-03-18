@@ -1,5 +1,5 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { getCookie } from "../lib/actions";
+import { getCookie, removeCookies } from "../lib/actions";
 
 interface ProtectedRouteProps {
   allowedRoles: string[];
@@ -10,6 +10,12 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ allowedRoles }) => {
   const userRole = getCookie("job_title") || "";
   const previousPage = sessionStorage.getItem("prevPath") || "/";
   const location = useLocation();
+
+  if (userRole == "null") {
+    sessionStorage.removeItem("prevPath");
+    removeCookies();
+    return <Navigate to="/login" replace />;
+  }
 
   if (location.pathname !== "/login" && isAuthenticated) {
     sessionStorage.setItem("previousPage", location.pathname);

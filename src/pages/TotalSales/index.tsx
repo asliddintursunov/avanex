@@ -52,8 +52,6 @@ function TotalSales() {
     })
   );
 
-  console.log("Sales", Sales);
-
   return (
     <Box as="div" p={2}>
       <h1 className="text-4xl font-bold mb-4">{t("menus.total_sales")}</h1>
