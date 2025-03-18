@@ -236,9 +236,12 @@ function Warehouse() {
             </Tbody>
           </Table>
         )}
-        <DownloadWarehouse ItemsInStock={ItemsInStock?.data || []} />
-        {!ItemsInStock?.data.length && !isLoading && <TableNoData />}
         {isLoading && <TableSkeleton />}
+        <DownloadWarehouse
+          groupName={groupName}
+          itemName={itemName}
+        />
+        {!ItemsInStock?.data.length && !isLoading && <TableNoData />}
       </Box>
     </Box>
   );

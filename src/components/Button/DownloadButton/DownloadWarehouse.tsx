@@ -1,59 +1,59 @@
 import { Box, Button } from "@chakra-ui/react";
-import { downloadAsExcel } from "../../../lib/helpers";
+import { downloadAsExcel, generateUrlWithParams } from "../../../lib/helpers";
 import { useTranslation } from "react-i18next";
-import { useEffect, useRef } from "react";
+import { useState } from "react";
 import { ItemsInStockType } from "../../../types/warehouse";
+import api from "../../../api/axiosInstance";
 
 type Props = {
-  ItemsInStock: ItemsInStockType[];
+  groupName?: string;
+  itemName?: string;
 };
 
-export default function DownloadAsExcelButton({ ItemsInStock }: Props) {
+export default function DownloadAsExcelButton({ groupName, itemName }: Props) {
   const { t } = useTranslation();
-  const Data = useRef<any[]>([]);
-  const warehouseNames = useRef<string[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  useEffect(() => {
+  const getExcelHeaders = (data: ItemsInStockType[]) => {
     const whsNames = Array.from(
       new Set(
-        ItemsInStock.flatMap((item) =>
-          item.documentLines.map((d) => d.warehouseName)
-        )
+        data.flatMap((item) => item.documentLines.map((d) => d.warehouseName))
       )
     );
-    warehouseNames.current = whsNames;
-  }, [ItemsInStock]);
 
-  const Headers = [
-    { header: t("labels.group"), key: "groupName", width: 50 },
-    { header: t("labels.item_name"), key: "itemName", width: 50 },
-    {
-      header: t("labels.total_quantity"),
-      key: "totalQuantity",
-      width: 25,
-    },
-    ...warehouseNames.current.flatMap((wh) => [
+    const Headers = [
+      { header: t("labels.group"), key: "groupName", width: 50 },
+      { header: t("labels.item_name"), key: "itemName", width: 50 },
       {
-        header: `${wh} ${t("labels.quantity")}`,
-        key: `${wh} ${t("labels.quantity")}`,
+        header: t("labels.total_quantity"),
+        key: "totalQuantity",
         width: 25,
       },
-      {
-        header: `${wh} ${t("labels.bron")}`,
-        key: `${wh} ${t("labels.bron")}`,
-        width: 25,
-      },
-      {
-        header: `${wh} ${t("labels.kg")}`,
-        key: `${wh} ${t("labels.kg")}`,
-        width: 25,
-      },
-    ]),
-  ];
+      ...whsNames.flatMap((wh) => [
+        {
+          header: `${wh} ${t("labels.quantity")}`,
+          key: `${wh} ${t("labels.quantity")}`,
+          width: 25,
+        },
+        {
+          header: `${wh} ${t("labels.bron")}`,
+          key: `${wh} ${t("labels.bron")}`,
+          width: 25,
+        },
+        {
+          header: `${wh} ${t("labels.kg")}`,
+          key: `${wh} ${t("labels.kg")}`,
+          width: 25,
+        },
+      ]),
+    ];
 
-  useEffect(() => {
-    const result =
-      ItemsInStock?.map((item) => ({
+    return Headers;
+  };
+
+  const getExcelBodyData = (data: ItemsInStockType[]) => {
+    const body =
+      data.map((item) => ({
         groupName: item.groupName,
         itemName: item.itemName,
         totalQuantity: item.inStockTotal,
@@ -64,16 +64,43 @@ export default function DownloadAsExcelButton({ ItemsInStock }: Props) {
           return acc;
         }, {}),
       })) || [];
-    Data.current = result;
-  }, [ItemsInStock, t]);
+    return body;
+  };
+
+  const fetchData = async () => {
+    setIsLoading(true);
+    const url = generateUrlWithParams("/items/in-stock", {
+      skip: 0,
+      limit: 10000,
+    });
+
+    try {
+      const response: {
+        data: {
+          data: ItemsInStockType[];
+        };
+      } = await api.get(url);
+      console.log("response", response.data.data);
+
+      const Headers = getExcelHeaders(response.data.data);
+      const Body = getExcelBodyData(response.data.data);
+
+      downloadAsExcel(t("menus.warehouse"), Body, Headers);
+    } catch (error) {
+      console.error(error);
+      console.log(groupName, itemName);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Box as="div" mt="2" display="flex" justifyContent="end">
       <Button
         colorScheme="green"
-        onClick={() =>
-          downloadAsExcel(t("menus.warehouse"), Data.current, Headers)
-        }
+        isLoading={isLoading}
+        loadingText={t("buttons.download_as_excel")}
+        onClick={() => fetchData()}
       >
         {t("buttons.download_as_excel")}
       </Button>
