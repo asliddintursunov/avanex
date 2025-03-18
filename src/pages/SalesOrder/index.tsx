@@ -141,10 +141,10 @@ function SalesOrder() {
                       key={idx}
                       cursor={"pointer"}
                       color="black"
-                      bg={el.documentStatus === "O" ? "green.300" : "white"}
+                      bg={el.documentStatus === "O" ? "white" : "green.300"}
                       _hover={{
                         bg:
-                          el.documentStatus === "O" ? "green.400" : "gray.100",
+                          el.documentStatus === "O" ? "gray.100" : "green.400",
                       }}
                       onClick={() => {
                         setOrderItem(el);

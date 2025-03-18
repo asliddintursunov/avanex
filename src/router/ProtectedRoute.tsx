@@ -7,20 +7,42 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ allowedRoles }) => {
   const isAuthenticated = Boolean(getCookie("access_token"));
-  const userRole = "";
-  const currentPath = window.location.pathname;
+  const userRole = getCookie("job_title") || "";
+  const previousPage = sessionStorage.getItem("prevPath") || "/";
   const location = useLocation();
 
+  if (location.pathname !== "/login" && isAuthenticated) {
+    sessionStorage.setItem("previousPage", location.pathname);
+  }
+
+  if (location.pathname === "/login" && isAuthenticated) {
+    return (
+      <Navigate
+        to={userRole === "bugalter" ? "/sales-order" : "/dashboard"}
+        replace
+      />
+    );
+  }
+
   if (location.pathname === "/") {
-    return <Navigate to={isAuthenticated ? "/dashboard" : "/login"} replace />;
+    return (
+      <Navigate
+        to={
+          isAuthenticated
+            ? `${userRole === "bugalter" ? "/sales-order" : "/dashboard"}`
+            : "/login"
+        }
+        replace
+      />
+    );
   }
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
 
-  if (!allowedRoles.includes(userRole || "")) {
-    return <Navigate to={currentPath} replace />;
+  if (!allowedRoles.includes(userRole)) {
+    return <Navigate to={previousPage} replace />;
   }
 
   return <Outlet />;

@@ -15,5 +15,6 @@ export function getCookie(key: string) {
 
 export function removeCookies() {
   cookies.remove("access_token");
-  cookies.remove("jobTitle");
+  cookies.remove("job_title");
+  cookies.remove("get_me");
 }

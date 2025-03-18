@@ -46,8 +46,10 @@ const Login = () => {
       setCookie("get_me", JSON.stringify(response.data.employee));
       setCookie("job_title", response.data.employee.jobTitle);
       if (response.data.employee.jobTitle.toLowerCase() === "bugalter") {
+        sessionStorage.setItem("previousPage", "/sales-order");
         navigate("/sales-order");
       } else if (response.data.employee.jobTitle.toLowerCase() === "manager") {
+        sessionStorage.setItem("previousPage", "/dashboard");
         navigate("/dashboard");
       }
     } catch (error) {

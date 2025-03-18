@@ -46,7 +46,8 @@ const NavBar = ({ onOpen }: { onOpen: () => void }) => {
   const handleLogOut = function () {
     // Clear all caches and storage, token, user data
     removeCookies();
-    navigate("/");
+    sessionStorage.clear();
+    navigate("/login");
   };
   const handleClose = () => {
     setIsOpen(false);
