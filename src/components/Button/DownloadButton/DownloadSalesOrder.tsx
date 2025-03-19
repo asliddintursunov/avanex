@@ -1,9 +1,5 @@
 import { Box, Button } from "@chakra-ui/react";
-import {
-  downloadAsExcel,
-  formatCurrency,
-  generateUrlWithParams,
-} from "../../../lib/helpers";
+import { downloadAsExcel, generateUrlWithParams } from "../../../lib/helpers";
 import { useTranslation } from "react-i18next";
 import { SalesOrdersType } from "../../../types/orders";
 import api from "../../../api/axiosInstance";
@@ -100,7 +96,7 @@ export default function DownloadAsExcelButton({ timeInterval }: Props) {
           docNum: `№${order.docNum}`,
           cardName: order.cardName,
           docDate: order.docDate.split("T")[0],
-          docTotalFc: formatCurrency(order.docTotalFc, "UZS"),
+          docTotalFc: order.docTotalFc,
           uTypeOrder: order.uTypeOrder,
           uFirma: order.uFirma,
           numAtCard: order.numAtCard,
