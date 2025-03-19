@@ -193,6 +193,7 @@ function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
             <Th>{t("labels.item_name")}</Th>
             <Th>{t("labels.weight")}</Th>
             <Th>{t("labels.measure_unit")}</Th>
+            <Th>{t("labels.quantity")}</Th>
             <Th>{t("labels.warehouse_code")}</Th>
             <Th>{t("labels.warehouse_name")}</Th>
           </Tr>
@@ -205,6 +206,7 @@ function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
                 <Td>{item.itemDescription}</Td>
                 <Td>{item.weight1}</Td>
                 <Td>{item.uoMName}</Td>
+                <Td>{item.quantity}</Td>
                 <Td>{item.warehouseCode}</Td>
                 <Td>{item.warehouseName}</Td>
               </Tr>

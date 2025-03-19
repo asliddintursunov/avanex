@@ -122,12 +122,13 @@ function SalesOrder() {
             <Thead bg={colorMode === "light" ? "gray.300" : "gray.800"}>
               <Tr>
                 <Th>{t("labels.doc_num")}</Th>
+                <Th></Th>
                 <Th>{t("labels.card_name")}</Th>
                 <Th>{t("labels.doc_date")}</Th>
                 <Th>{t("labels.doc_total")}</Th>
                 <Th>{t("labels.u_type_order")}</Th>
                 <Th>{t("labels.u_firma")}</Th>
-                <Th>{t("labels.u_jonatildi")}</Th>
+                <Th>{t("labels.num_at_card")}</Th>
                 <Th>{t("labels.u_tip_dostavka")}</Th>
                 <Th>{t("labels.specification")}</Th>
                 <Th>{t("labels.u_ruxsat")}</Th>
@@ -152,12 +153,13 @@ function SalesOrder() {
                       }}
                     >
                       <Td>№{el.docNum}</Td>
+                      <Td><input type="checkbox" /></Td>
                       <Td>{el.cardName}</Td>
                       <Td>{el.docDate.split("T")[0]}</Td>
                       <Td>{formatCurrency(el.docTotalFc, "UZS")}</Td>
                       <Td>{el.uTypeOrder || "Null"}</Td>
                       <Td>{el.uFirma || "Null"}</Td>
-                      <Td>{el.uJonatildi}</Td>
+                      <Td>{el.numAtCard}</Td>
                       <Td>{el.uTipdostavkaName || "Null"}</Td>
                       <Td>{el.uSpecification || "Null"}</Td>
                       <Td>{el.uRuxsat}</Td>

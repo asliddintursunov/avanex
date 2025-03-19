@@ -73,7 +73,15 @@
     "comment": "Комментарий",
     "no_comment": "Нет комментария",
     "measure_unit": "Единица измерения",
-    "specification": "Спецификация"
+    "specification": "Спецификация",
+    "num_at_card": "Договор",
+    "total_bron": "Общая бронь",
+    "available_quantity": "Доступное количество",
+    "debit": "Дебет",
+    "credit": "Кредит",
+    "balance": "Баланс",
+    "current_debit": "Текущий дебет",
+    "balance_first_day_of_period": "Остаток на начало периода"
   },
   "buttons": {
     "go_back": "Назад",

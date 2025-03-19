@@ -58,11 +58,6 @@ function Warehouse() {
     );
     warehouseNames.current = whsNames;
   }
-
-  const th_td_style = {
-    border: `1px solid ${colorMode === "light" ? "darkgray" : "gray"}`,
-  };
-
   return (
     <Box as="div" p={2}>
       <h1 className="text-4xl font-bold mb-4">{t("menus.warehouse")}</h1>
@@ -108,96 +103,14 @@ function Warehouse() {
           />
         </Box>
         {!isLoading && (
-          <Table textAlign="center" size="sm">
+          <Table variant="striped" colorScheme="gray" textAlign="center">
             <Thead bg={colorMode === "light" ? "gray.300" : "gray.800"}>
               <Tr>
-                <Th
-                  style={th_td_style}
-                  color={colorMode === "light" ? "black" : "gray.300"}
-                >
-                  {t("labels.group")}
-                </Th>
-                <Th
-                  style={th_td_style}
-                  color={colorMode === "light" ? "black" : "gray.300"}
-                >
-                  {t("labels.item_name")}
-                </Th>
-                <Th
-                  style={th_td_style}
-                  color={colorMode === "light" ? "black" : "gray.300"}
-                >
-                  {t("labels.total_quantity")}
-                </Th>
-                {warehouseNames.current.map((wh, index) => (
-                  <Th
-                    style={th_td_style}
-                    color="black"
-                    key={wh}
-                    colSpan={3}
-                    textAlign="center"
-                    bg={
-                      index === 0
-                        ? "#E6D0C0"
-                        : index === 1
-                        ? "#C6D9F1"
-                        : "#D8E4BC"
-                    }
-                    borderRight="2px solid black"
-                  >
-                    {wh}
-                  </Th>
-                ))}
-              </Tr>
-              <Tr>
-                <Th style={th_td_style} colSpan={3}></Th>
-                {warehouseNames.current.map((wh, index) => (
-                  <>
-                    <Th
-                      key={wh + "-soni"}
-                      color="black"
-                      style={th_td_style}
-                      bg={
-                        index === 0
-                          ? "#E6D0C0"
-                          : index === 1
-                          ? "#C6D9F1"
-                          : "#D8E4BC"
-                      }
-                    >
-                      {t("labels.quantity")}
-                    </Th>
-                    <Th
-                      key={wh + "-bron"}
-                      color="black"
-                      style={th_td_style}
-                      bg={
-                        index === 0
-                          ? "#E6D0C0"
-                          : index === 1
-                          ? "#C6D9F1"
-                          : "#D8E4BC"
-                      }
-                    >
-                      {t("labels.bron")}
-                    </Th>
-                    <Th
-                      key={wh + "-kg"}
-                      color="black"
-                      style={th_td_style}
-                      bg={
-                        index === 0
-                          ? "#E6D0C0"
-                          : index === 1
-                          ? "#C6D9F1"
-                          : "#D8E4BC"
-                      }
-                      borderRight="2px solid black"
-                    >
-                      {t("labels.kg")}
-                    </Th>
-                  </>
-                ))}
+                <Th>{t("labels.group")}</Th>
+                <Th>{t("labels.item_name")}</Th>
+                <Th>{t("labels.total_quantity")}</Th>
+                <Th>{t("labels.total_bron")}</Th>
+                <Th>{t("labels.available_quantity")}</Th>
               </Tr>
             </Thead>
             <Tbody>
@@ -206,41 +119,21 @@ function Warehouse() {
                   key={index}
                   cursor={"pointer"}
                   _hover={{
-                    bg: colorMode === "light" ? "gray.100" : "gray.500",
+                    bg: colorMode === "light" ? "gray.300" : "gray.500",
                   }}
                 >
-                  <Td style={th_td_style}>{item.groupName}</Td>
-                  <Td style={th_td_style}>{item.itemName}</Td>
-                  <Td style={th_td_style}>{item.inStockTotal}</Td>
-                  {warehouseNames.current.map((wh) => {
-                    const warehouseData = item.documentLines.find(
-                      (w) => w.warehouseName === wh
-                    );
-                    return (
-                      <>
-                        <Td style={th_td_style} key={wh + "-soni"}>
-                          {warehouseData?.inStock || 0}
-                        </Td>
-                        <Td style={th_td_style} key={wh + "-bron"}>
-                          {warehouseData?.ordered || 0}
-                        </Td>
-                        <Td style={th_td_style} key={wh + "-kg"}>
-                          {/* {(warehouseData?.weight || 0).toFixed(2)} */}
-                          {item.uoMCode}
-                        </Td>
-                      </>
-                    );
-                  })}
+                  <Td>{item.groupName}</Td>
+                  <Td>{item.itemName}</Td>
+                  <Td>{item.inStockTotal}</Td>
+                  <Td>{item.orderedTotal}</Td>
+                  <Td>{item.inStockTotal - Number(item.orderedTotal)}</Td>
                 </Tr>
               ))}
             </Tbody>
           </Table>
         )}
         {isLoading && <TableSkeleton />}
-        <DownloadWarehouse
-          groupName={groupName}
-          itemName={itemName}
-        />
+        <DownloadWarehouse groupName={groupName} itemName={itemName} />
         {!ItemsInStock?.data.length && !isLoading && <TableNoData />}
       </Box>
     </Box>

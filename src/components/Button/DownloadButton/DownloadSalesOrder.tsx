@@ -50,6 +50,11 @@ export default function DownloadAsExcelButton({ timeInterval }: Props) {
       width: 30,
     },
     {
+      header: t("labels.num_at_card"),
+      key: "numAtCard",
+      width: 30,
+    },
+    {
       header: t("labels.u_jonatildi"),
       key: "uJonatildi",
       width: 30,
@@ -98,6 +103,7 @@ export default function DownloadAsExcelButton({ timeInterval }: Props) {
           docTotalFc: formatCurrency(order.docTotalFc, "UZS"),
           uTypeOrder: order.uTypeOrder,
           uFirma: order.uFirma,
+          numAtCard: order.numAtCard,
           uJonatildi: order.uJonatildi,
           uTipdostavkaName: order.uTipdostavkaName,
           uSpecification: order.uSpecification,

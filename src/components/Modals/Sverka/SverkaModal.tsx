@@ -83,10 +83,13 @@ function SverkaModal({ isOpen, onClose, partner }: Props) {
             setValue={setEndDate}
           />
         </Box>
-        <DisabledInput label="Joriy qarz" value={"Joriy qarz"} />
         <DisabledInput
-          label="Davr boshidagi qoldiq"
-          value={"Davr boshidagi qoldiq"}
+          label={t("labels.current_debit")}
+          value={SverkaData?.data[0]?.debit.toString() || "0"}
+        />
+        <DisabledInput
+          label={t("labels.balance_first_day_of_period")}
+          value={SverkaData?.data[0]?.balanceFirstDayOfPeriod.toString() || "0"}
         />
       </Box>
     );
@@ -122,11 +125,11 @@ function SverkaModal({ isOpen, onClose, partner }: Props) {
               <Thead bg={colorMode === "light" ? "gray.300" : "gray.800"}>
                 <Tr>
                   <Th>{t("labels.doc_date")}</Th>
-                  <Th>{t("Base ref")}</Th>
-                  <Th>{t("Line memo")}</Th>
-                  <Th>{t("debit")}</Th>
-                  <Th>{t("credit")}</Th>
-                  <Th>{t("Culminative balance")}</Th>
+                  {/* <Th>{t("Base ref")}</Th>
+                  <Th>{t("Line memo")}</Th> */}
+                  <Th>{t("labels.debit")}</Th>
+                  <Th>{t("labels.credit")}</Th>
+                  <Th>{t("labels.balance")}</Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -140,11 +143,11 @@ function SverkaModal({ isOpen, onClose, partner }: Props) {
                         }}
                       >
                         <Td>{el.dueDate.split("T")[0]}</Td>
-                        <Td>{el.baseRef}</Td>
-                        <Td>{el.lineMemo}</Td>
+                        {/* <Td>{el.baseRef}</Td>
+                        <Td>{el.lineMemo}</Td> */}
                         <Td>{el.debit}</Td>
                         <Td>{el.credit}</Td>
-                        <Td>{el.cumulativeBalance}</Td>
+                        <Td>{el.balance}</Td>
                       </Tr>
                     ))
                   : null}

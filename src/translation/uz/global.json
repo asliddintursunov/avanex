@@ -73,7 +73,15 @@
     "comment": "Izoh",
     "no_comment": "Izoh mavjud emas",
     "measure_unit": "O'lchov birligi",
-    "specification": "Spetsifikatsiya"
+    "specification": "Spetsifikatsiya",
+    "num_at_card": "Shartnoma",
+    "total_bron": "Umumiy bron",
+    "available_quantity": "Mavjud soni",
+    "debit": "Qarz",
+    "credit": "Kredit",
+    "balance": "Balans",
+    "current_debit": "Joriy qarz",
+    "balance_first_day_of_period": "Davrning boshidagi qoldiq"
   },
   "buttons": {
     "go_back": "Ortga qaytish",
