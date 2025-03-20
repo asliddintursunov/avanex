@@ -81,7 +81,8 @@
     "credit": "Kredit",
     "balance": "Balans",
     "current_debit": "Joriy qarz",
-    "balance_first_day_of_period": "Davrning boshidagi qoldiq"
+    "balance_first_day_of_period": "Davrning boshidagi qoldiq",
+    "total_price": "Umumiy narxi"
   },
   "buttons": {
     "go_back": "Ortga qaytish",

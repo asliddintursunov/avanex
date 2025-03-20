@@ -81,7 +81,8 @@
     "credit": "Кредит",
     "balance": "Баланс",
     "current_debit": "Текущий дебет",
-    "balance_first_day_of_period": "Остаток на начало периода"
+    "balance_first_day_of_period": "Остаток на начало периода",
+    "total_price": "Общая цена"
   },
   "buttons": {
     "go_back": "Назад",
