@@ -26,8 +26,8 @@ const Login = () => {
 
   const [showPassword, setShowPassword] = useState<boolean>(!false);
   const [isPending, setIsPending] = useState<boolean>(false);
-  const [loginValue, setLoginValue] = useState<string>("Bugalter");
-  const [passwordValue, setPasswordValue] = useState<string>("123");
+  const [loginValue, setLoginValue] = useState<string>("");
+  const [passwordValue, setPasswordValue] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
