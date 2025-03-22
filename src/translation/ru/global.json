@@ -72,7 +72,7 @@
     "order": "Заказ №{{number}}",
     "comment": "Комментарий",
     "no_comment": "Нет комментария",
-    "measure_unit": "Единица измерения",
+    "measure_unit": "Ед.И",
     "specification": "Спецификация",
     "num_at_card": "Договор",
     "total_bron": "Общая бронь",
@@ -82,7 +82,8 @@
     "balance": "Баланс",
     "current_debit": "Текущий дебет",
     "balance_first_day_of_period": "Остаток на начало периода",
-    "total_price": "Общая цена"
+    "total_price": "Общая цена",
+    "u_narx": "Цена за вес"
   },
   "buttons": {
     "go_back": "Назад",

@@ -190,13 +190,15 @@ function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
         <Thead>
           <Tr>
             <Th>{t("labels.item_name")}</Th>
-            <Th>{t("labels.weight")}</Th>
+            <Th>{t("labels.quantity")}</Th>
             <Th>{t("labels.measure_unit")}</Th>
             <Th>{t("labels.price")}</Th>
-            <Th>{t("labels.quantity")}</Th>
             <Th>{t("labels.total_price")}</Th>
-            <Th>{t("labels.warehouse_code")}</Th>
-            <Th>{t("labels.warehouse_name")}</Th>
+            <Td>{t("labels.weight")}</Td>
+            <Td>{t("labels.u_narx")}</Td>
+            <Td>{t("length1")}</Td>
+            <Td>{t("width1")}</Td>
+            <Td>{t("sWidth1")}</Td>
           </Tr>
         </Thead>
         <Tbody>
@@ -204,13 +206,15 @@ function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
             itemOrder.documentLines.map((item, index) => (
               <Tr key={index}>
                 <Td>{item.itemDescription}</Td>
-                <Td>{item.weight1}</Td>
+                <Td>{item.quantity}</Td>
                 <Td>{item.uoMName}</Td>
                 <Td>{formatCurrency(item.priceFC, "UZS")}</Td>
-                <Td>{item.quantity}</Td>
                 <Td>{formatCurrency(item.priceFC * item.quantity, "UZS")}</Td>
-                <Td>{item.warehouseCode}</Td>
-                <Td>{item.warehouseName}</Td>
+                <Td>{String(item.weight1)}</Td>
+                <Td>{String(item.uNarx)}</Td>
+                <Td>{String(item.length1)}</Td>
+                <Td>{String(item.width1)}</Td>
+                <Td>{String(item.sWidth1)}</Td>
               </Tr>
             ))}
         </Tbody>

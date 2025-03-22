@@ -43,5 +43,8 @@ export type SalesOrdersType = {
     uoMName: string;
     uNarx: null;
     lineStatus: string;
+    sWidth1: number;
+    length1: number;
+    width1: number;
   }[];
 };
