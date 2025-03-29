@@ -4,15 +4,14 @@ import { useTranslation } from "react-i18next";
 import { SalesOrdersType } from "../../../types/orders";
 import api from "../../../api/axiosInstance";
 import { useState } from "react";
+import DownloadExcelModal from "../../Modals/Orders/DownloadExcelModal";
 
-type Props = {
-  timeInterval: string;
-};
-
-export default function DownloadAsExcelButton({ timeInterval }: Props) {
+export default function DownloadAsExcelButton() {
   const { t } = useTranslation();
-  const [startDate, endDate] = timeInterval.split("&&");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [startDate, setStartDate] = useState<string>("");
+  const [endDate, setEndDate] = useState<string>("");
 
   const Headers = [
     {
@@ -117,15 +116,39 @@ export default function DownloadAsExcelButton({ timeInterval }: Props) {
   };
 
   return (
-    <Box as="div" mt="2" display="flex" justifyContent="end">
-      <Button
-        colorScheme="green"
-        onClick={() => fetchData()}
-        isLoading={isLoading}
-        loadingText={t("buttons.download_as_excel")}
-      >
-        {t("buttons.download_as_excel")}
-      </Button>
-    </Box>
+    <>
+      <Box as="div" mt="2" display="flex" justifyContent="end">
+        <Button
+          colorScheme="green"
+          onClick={() => setIsModalOpen(true)}
+          loadingText={t("buttons.download_as_excel")}
+        >
+          {t("buttons.download_as_excel")}
+        </Button>
+      </Box>
+      {isModalOpen && (
+        <DownloadExcelModal
+          ModalFooter={
+            <Box as="div" mt="2" display="flex" justifyContent="end">
+              <Button
+                disabled={!startDate || !endDate || isLoading}
+                colorScheme="green"
+                onClick={() => fetchData()}
+                isLoading={isLoading}
+                loadingText={t("buttons.download_as_excel")}
+              >
+                {t("buttons.download_as_excel")}
+              </Button>
+            </Box>
+          }
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+          startDate={startDate}
+          endDate={endDate}
+        />
+      )}
+    </>
   );
 }

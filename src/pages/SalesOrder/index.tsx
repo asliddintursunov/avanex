@@ -1,8 +1,11 @@
 import {
   Box,
+  Checkbox,
+  Select,
   Table,
   Tbody,
   Td,
+  Text,
   Th,
   Thead,
   Tr,
@@ -33,6 +36,7 @@ function SalesOrder() {
   const [endDate, setEndDate] = useState<string>("");
   const [cardName, setCardName] = useState<string>("");
   const [salesPersonName, setSalesPersonName] = useState<string>("");
+  const [warehouse, setWarehouse] = useState<string>("");
   const [skip, setSkip] = useState<number>(0);
 
   const [debouncedCardName] = useDebounce(cardName, 500);
@@ -42,13 +46,14 @@ function SalesOrder() {
     data: SalesOrdersType[];
   }>(
     [
-      `orders-${startDate}-${endDate}-${debouncedCardName}-${salesPersonName}-${skip}`,
+      `orders-${startDate}-${endDate}-${debouncedCardName}-${salesPersonName}-${warehouse}-${skip}`,
     ],
     generateUrlWithParams("/orders", {
       docDateStart: startDate && endDate ? startDate : undefined,
       docDateEnd: startDate && endDate ? endDate : undefined,
       cardName: debouncedCardName,
       salesPersonName: salesPersonName,
+      uFirma: warehouse,
       skip: skip,
     }),
     false
@@ -97,6 +102,14 @@ function SalesOrder() {
               setValue={setCardName}
             />
             <SalesPerons setValue={setSalesPersonName} />
+          </Box>
+          <Box display="flex" flexDir="column" gap="1">
+            <Text as="label">{t("labels.warehouse")}</Text>
+            <Select size="md" onChange={(e) => setWarehouse(e.target.value)}>
+              <option value="">{t("labels.warehouse")}</option>
+              <option value="Avanta trade">Avanta trade</option>
+              <option value="Avanex">Avanex</option>
+            </Select>
           </Box>
           <Pagination
             dataLength={Orders?.data.length || 0}
@@ -153,7 +166,9 @@ function SalesOrder() {
                       }}
                     >
                       <Td>№{el.docNum}</Td>
-                      {/* <Td><input type="checkbox" /></Td> */}
+                      {/* <Td>
+                        <Checkbox size="md" borderColor="royalblue" />
+                      </Td> */}
                       <Td>{el.cardName}</Td>
                       <Td>{el.docDate.split("T")[0]}</Td>
                       <Td>{formatCurrency(el.docTotalFc, "UZS")}</Td>
@@ -172,7 +187,7 @@ function SalesOrder() {
         )}
         {!Orders?.data.length && !isLoading && <TableNoData />}
         {isLoading && <TableSkeleton />}
-        <DownloadSalesOrder timeInterval={`${startDate}&&${endDate}`} />
+        <DownloadSalesOrder />
       </Box>
       {isOpen && (
         <SalesOrderModal

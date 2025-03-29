@@ -85,7 +85,9 @@
     "total_price": "Общая цена",
     "u_narx": "Цена за вес",
     "length1": "Длина",
-    "width1": "Ширина"
+    "width1": "Ширина",
+    "choose_date_range": "Выберите диапазон дат",
+    "warehouse": "Склад"
   },
   "buttons": {
     "go_back": "Назад",
@@ -101,6 +103,7 @@
     "error": "Ошибка",
     "success": "Успех",
     "success_sending_request": "Запрос был отправлен успешно.",
-    "error_sending_request": "Ошибка при отправке запроса, попробуйте еще раз."
+    "error_sending_request": "Ошибка при отправке запроса, попробуйте еще раз.",
+    "error_fetching_data": "Ошибка получения данных"
   }
 }

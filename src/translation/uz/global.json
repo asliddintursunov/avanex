@@ -85,7 +85,9 @@
     "total_price": "Umumiy narxi",
     "u_narx": "KG narxi",
     "length1": "Uzunligi",
-    "width1": "Eni"
+    "width1": "Eni",
+    "choose_date_range": "Sana oralig'ini tanlang",
+    "warehouse": "Ombor"
   },
   "buttons": {
     "go_back": "Ortga qaytish",
@@ -101,6 +103,7 @@
     "error": "Xatolik",
     "success": "Muvaffaqiyat",
     "success_sending_request": "So'rov muvaffaqiyatli yuborildi.",
-    "error_sending_request": "So'rov yuborishda xatolik, qaytadan urunib ko'ring."
+    "error_sending_request": "So'rov yuborishda xatolik, qaytadan urunib ko'ring.",
+    "error_fetching_data": "Ma'lumotlarni olishda xatolik"
   }
 }
