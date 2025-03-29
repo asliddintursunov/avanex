@@ -196,9 +196,8 @@ function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
             <Th>{t("labels.total_price")}</Th>
             <Td>{t("labels.weight")}</Td>
             <Td>{t("labels.u_narx")}</Td>
-            <Td>{t("length1")}</Td>
-            <Td>{t("width1")}</Td>
-            <Td>{t("sWidth1")}</Td>
+            <Td>{t("labels.length1")}</Td>
+            <Td>{t("labels.width1")}</Td>
           </Tr>
         </Thead>
         <Tbody>
@@ -214,7 +213,6 @@ function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
                 <Td>{String(item.uNarx)}</Td>
                 <Td>{String(item.length1)}</Td>
                 <Td>{String(item.width1)}</Td>
-                <Td>{String(item.sWidth1)}</Td>
               </Tr>
             ))}
         </Tbody>

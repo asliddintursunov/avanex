@@ -83,7 +83,9 @@
     "current_debit": "Текущий дебет",
     "balance_first_day_of_period": "Остаток на начало периода",
     "total_price": "Общая цена",
-    "u_narx": "Цена за вес"
+    "u_narx": "Цена за вес",
+    "length1": "Длина",
+    "width1": "Ширина"
   },
   "buttons": {
     "go_back": "Назад",

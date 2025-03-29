@@ -122,7 +122,7 @@ export default function DownloadAsExcelButton({ timeInterval }: Props) {
         colorScheme="green"
         onClick={() => fetchData()}
         isLoading={isLoading}
-        loadingText={t("buttons.downloading")}
+        loadingText={t("buttons.download_as_excel")}
       >
         {t("buttons.download_as_excel")}
       </Button>

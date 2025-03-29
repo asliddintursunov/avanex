@@ -125,8 +125,8 @@ function Warehouse() {
                   <Td>{item.groupName}</Td>
                   <Td>{item.itemName}</Td>
                   <Td>{item.inStockTotal}</Td>
-                  <Td>{item.orderedTotal}</Td>
-                  <Td>{item.inStockTotal - Number(item.orderedTotal)}</Td>
+                  <Td>{item.committedTotal}</Td>
+                  <Td>{item.inStockTotal - Number(item.committedTotal)}</Td>
                 </Tr>
               ))}
             </Tbody>
