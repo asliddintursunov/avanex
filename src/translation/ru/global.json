@@ -97,13 +97,16 @@
     "want_to_logout": "Вы хотите выйти из системы?",
     "yes": "Да",
     "no": "Нет",
-    "download_as_excel": "Скачать как Excel"
+    "download_as_excel": "Скачать как Excel",
+    "actions": "Действия"
   },
   "toast_messages": {
     "error": "Ошибка",
     "success": "Успех",
     "success_sending_request": "Запрос был отправлен успешно.",
     "error_sending_request": "Ошибка при отправке запроса, попробуйте еще раз.",
-    "error_fetching_data": "Ошибка получения данных"
+    "error_fetching_data": "Ошибка получения данных",
+    "error_updating_status": "Ошибка обновления статуса",
+    "success_updating_status": "Статус обновлен успешно"
   }
 }

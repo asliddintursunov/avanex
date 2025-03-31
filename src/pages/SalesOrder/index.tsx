@@ -1,6 +1,7 @@
 import {
   Box,
-  // Checkbox,
+  Button,
+  Checkbox,
   Select,
   Table,
   Tbody,
@@ -15,7 +16,7 @@ import {
 import TextInput from "../../components/Input/TextInput";
 import { useTranslation } from "react-i18next";
 import Pagination from "../../components/Pagination/Pagination";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 import DateInput from "../../components/Input/DateInput";
 import SalesPerons from "../../components/Select/SalesPersonsSelect";
@@ -26,11 +27,17 @@ import TableNoData from "../../components/Table/TableNoData";
 import TableSkeleton from "../../components/Skeleton/TableSkeleton";
 import SalesOrderModal from "../../components/Modals/Orders/SalesOrdersModal";
 import DownloadSalesOrder from "../../components/Button/DownloadButton/DownloadSalesOrder";
+import { FaEye, FaSave } from "react-icons/fa";
+import { useFetch } from "../../hooks/useFetch";
+import { useToast } from "../../hooks/useToast";
 
 function SalesOrder() {
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { sendData } = useFetch();
+  const showToast = useToast();
+  const baseUrl = import.meta.env.VITE_BASE_URL;
 
   const [startDate, setStartDate] = useState<string>("");
   const [endDate, setEndDate] = useState<string>("");
@@ -41,6 +48,9 @@ function SalesOrder() {
 
   const [debouncedCardName] = useDebounce(cardName, 500);
   const [orderItem, setOrderItem] = useState<SalesOrdersType>();
+  const [ordersData, setOrdersData] = useState<SalesOrdersType[]>([]);
+  const [isRuxsatChange, setIsRuxsatChange] = useState<boolean>(false);
+  const [updating, setUpdating] = useState<boolean>(false);
 
   const { data: Orders, isLoading } = useRQFetchData<{
     data: SalesOrdersType[];
@@ -58,6 +68,56 @@ function SalesOrder() {
     }),
     false
   );
+
+  useEffect(() => {
+    setOrdersData(Orders?.data || []);
+  }, [Orders]);
+
+  const handleCheckboxChange = (docEntry: number, uRuxsat: string) => {
+    const newRuxsat = uRuxsat === "Ха" ? "Йўқ" : "Ха";
+    setIsRuxsatChange(true);
+    setOrdersData(
+      ordersData.map((order) =>
+        order.docEntry === docEntry ? { ...order, uRuxsat: newRuxsat } : order
+      )
+    );
+  };
+
+  const handleSumbitRuxsatChange = async () => {
+    setUpdating(true);
+    const data = ordersData.map((el) => ({
+      docEntry: el.docEntry,
+      uRuxsat: el.uRuxsat,
+    }));
+
+    await sendData({
+      url: `${baseUrl}/orders/bulk-update`,
+      data: {
+        orders: data,
+      },
+      method: "PATCH",
+    })
+      .then(() => {
+        showToast({
+          title: t("toast_messages.success"),
+          description: t("toast_messages.success_updating_status"),
+          status: "success",
+          position: "top",
+        });
+      })
+      .catch(() => {
+        showToast({
+          title: t("toast_messages.error"),
+          description: t("toast_messages.error_updating_status"),
+          status: "error",
+          position: "top",
+        });
+      })
+      .finally(() => {
+        setUpdating(false);
+        setIsRuxsatChange(false);
+      });
+  };
 
   return (
     <Box as="div" p={2}>
@@ -111,8 +171,21 @@ function SalesOrder() {
               <option value="Avanex">Avanex</option>
             </Select>
           </Box>
+          {isRuxsatChange && (
+            <Button
+              variant="solid"
+              isLoading={updating}
+              loadingText={t("buttons.save")}
+              size="md"
+              colorScheme="blue"
+              onClick={handleSumbitRuxsatChange}
+              rightIcon={<FaSave />}
+            >
+              {t("buttons.save")}
+            </Button>
+          )}
           <Pagination
-            dataLength={Orders?.data.length || 0}
+            dataLength={ordersData.length || 0}
             skip={skip}
             setSkip={setSkip}
           />
@@ -135,7 +208,7 @@ function SalesOrder() {
             <Thead bg={colorMode === "light" ? "gray.300" : "gray.800"}>
               <Tr>
                 <Th>{t("labels.doc_num")}</Th>
-                {/* <Th></Th> */}
+                <Th></Th>
                 <Th>{t("labels.card_name")}</Th>
                 <Th>{t("labels.doc_date")}</Th>
                 <Th>{t("labels.doc_total")}</Th>
@@ -146,11 +219,12 @@ function SalesOrder() {
                 <Th>{t("labels.specification")}</Th>
                 <Th>{t("labels.u_ruxsat")}</Th>
                 <Th>{t("labels.sales_person_name")}</Th>
+                <Th>{t("buttons.actions")}</Th>
               </Tr>
             </Thead>
             <Tbody>
-              {Orders?.data.length
-                ? Orders.data.map((el, idx) => (
+              {ordersData.length
+                ? ordersData.map((el, idx) => (
                     <Tr
                       key={idx}
                       cursor={"pointer"}
@@ -160,15 +234,19 @@ function SalesOrder() {
                         bg:
                           el.documentStatus === "O" ? "gray.100" : "green.400",
                       }}
-                      onClick={() => {
-                        setOrderItem(el);
-                        onOpen();
-                      }}
                     >
                       <Td>№{el.docNum}</Td>
-                      {/* <Td>
-                        <Checkbox size="md" borderColor="royalblue" />
-                      </Td> */}
+                      <Td>
+                        <Checkbox
+                          disabled={updating}
+                          size="md"
+                          borderColor="royalblue"
+                          isChecked={el.uRuxsat === "Ха"}
+                          onChange={() =>
+                            handleCheckboxChange(el.docEntry, el.uRuxsat)
+                          }
+                        />
+                      </Td>
                       <Td>{el.cardName}</Td>
                       <Td>{el.docDate.split("T")[0]}</Td>
                       <Td>{formatCurrency(el.docTotalFc, "UZS")}</Td>
@@ -179,13 +257,26 @@ function SalesOrder() {
                       <Td>{el.uSpecification || "Null"}</Td>
                       <Td>{el.uRuxsat}</Td>
                       <Td>{el.salesPersonName}</Td>
+                      <Td>
+                        <Button
+                          variant="solid"
+                          size="sm"
+                          colorScheme="blue"
+                          onClick={() => {
+                            setOrderItem(el);
+                            onOpen();
+                          }}
+                        >
+                          <FaEye />
+                        </Button>
+                      </Td>
                     </Tr>
                   ))
                 : null}
             </Tbody>
           </Table>
         )}
-        {!Orders?.data.length && !isLoading && <TableNoData />}
+        {!ordersData.length && !isLoading && <TableNoData />}
         {isLoading && <TableSkeleton />}
         <DownloadSalesOrder />
       </Box>

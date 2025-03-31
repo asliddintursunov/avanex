@@ -97,13 +97,16 @@
     "want_to_logout": "Rostdan ham tizimdan chiqmoqchimisiz?",
     "yes": "Ha",
     "no": "Yo'q",
-    "download_as_excel": "Excel ga ko'chirish"
+    "download_as_excel": "Excel ga ko'chirish",
+    "actions": "Amallar"
   },
   "toast_messages": {
     "error": "Xatolik",
     "success": "Muvaffaqiyat",
     "success_sending_request": "So'rov muvaffaqiyatli yuborildi.",
     "error_sending_request": "So'rov yuborishda xatolik, qaytadan urunib ko'ring.",
-    "error_fetching_data": "Ma'lumotlarni olishda xatolik"
+    "error_fetching_data": "Ma'lumotlarni olishda xatolik",
+    "error_updating_status": "Xatolik, statusni yangilashda xatolik",
+    "success_updating_status": "Status muvaffaqiyatli yangilandi"
   }
 }
