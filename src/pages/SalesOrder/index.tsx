@@ -219,7 +219,6 @@ function SalesOrder() {
                 <Th>{t("labels.specification")}</Th>
                 <Th>{t("labels.u_ruxsat")}</Th>
                 <Th>{t("labels.sales_person_name")}</Th>
-                <Th>{t("buttons.actions")}</Th>
               </Tr>
             </Thead>
             <Tbody>
@@ -235,13 +234,36 @@ function SalesOrder() {
                           el.documentStatus === "O" ? "gray.100" : "green.400",
                       }}
                     >
-                      <Td>№{el.docNum}</Td>
+                      <Td>
+                        <Box
+                          as="div"
+                          display="flex"
+                          flexDir="row"
+                          alignItems="center"
+                          gap="2"
+                        >
+                          <Button
+                            variant="solid"
+                            size="sm"
+                            colorScheme="blue"
+                            onClick={() => {
+                              setOrderItem(el);
+                              onOpen();
+                            }}
+                          >
+                            <FaEye />
+                          </Button>
+                          <Text fontSize="sm" fontWeight="bold">
+                            №{el.docNum}
+                          </Text>
+                        </Box>
+                      </Td>
                       <Td>
                         <Checkbox
                           disabled={updating}
                           size="md"
                           borderColor="royalblue"
-                          isChecked={el.uRuxsat === "Ха"}
+                          isChecked={el.uRuxsat === "Йўқ"}
                           onChange={() =>
                             handleCheckboxChange(el.docEntry, el.uRuxsat)
                           }
@@ -257,19 +279,6 @@ function SalesOrder() {
                       <Td>{el.uSpecification || "Null"}</Td>
                       <Td>{el.uRuxsat}</Td>
                       <Td>{el.salesPersonName}</Td>
-                      <Td>
-                        <Button
-                          variant="solid"
-                          size="sm"
-                          colorScheme="blue"
-                          onClick={() => {
-                            setOrderItem(el);
-                            onOpen();
-                          }}
-                        >
-                          <FaEye />
-                        </Button>
-                      </Td>
                     </Tr>
                   ))
                 : null}
