@@ -45,7 +45,10 @@ const Login = () => {
       setCookie("access_token", response.data.token);
       setCookie("get_me", JSON.stringify(response.data.employee));
       setCookie("job_title", response.data.employee.jobTitle);
-      if (response.data.employee.jobTitle.toLowerCase() === "bugalter") {
+      if (
+        response.data.employee.jobTitle.toLowerCase() === "bugalter" ||
+        response.data.employee.jobTitle.toLowerCase() === "бухгалтер по реал"
+      ) {
         sessionStorage.setItem("previousPage", "/sales-order");
         navigate("/sales-order");
       } else if (response.data.employee.jobTitle.toLowerCase() === "manager") {

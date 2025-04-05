@@ -16,7 +16,11 @@ import ClientsList from "../pages/ClientsList";
 export const Routes = [
   {
     path: "/",
-    element: <ProtectedRoute allowedRoles={["bugalter", "manager"]} />,
+    element: (
+      <ProtectedRoute
+        allowedRoles={["bugalter", "manager", "бухгалтер по реал"]}
+      />
+    ),
     children: [
       {
         path: "/",
