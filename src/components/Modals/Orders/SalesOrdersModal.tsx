@@ -207,8 +207,8 @@ function SalesOrderModal({ isOpen, onClose, itemOrder }: Props) {
                 <Td>{item.itemDescription}</Td>
                 <Td>{item.quantity}</Td>
                 <Td>{item.uoMName}</Td>
-                <Td>{formatCurrency(item.priceFC, "UZS")}</Td>
-                <Td>{formatCurrency(item.priceFC * item.quantity, "UZS")}</Td>
+                <Td>{formatCurrency(item.price, "UZS")}</Td>
+                <Td>{formatCurrency(item.price * item.quantity, "UZS")}</Td>
                 <Td>{String(item.weight1)}</Td>
                 <Td>{String(item.uNarx)}</Td>
                 <Td>{String(item.length1)}</Td>
